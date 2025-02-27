@@ -1,4 +1,5 @@
-name: Binance-Peg BSC-USD
+id: binance_usdt
+name: Binance Tether
 symbol: USDT
 asset_type: token
 type: BEP20
@@ -9,3 +10,5 @@ website: https://tether.to/
 explorer: https://explorer.binance.org/asset/USDT-6D8
 decimals: 8
 address: "0x55d398326f99059fF775485246999027B3197955"
+status: active
+

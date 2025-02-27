@@ -1,0 +1,13 @@
+id: pactus_pac
+name: Pactus
+symbol: PAC
+asset_type: coin
+type: NATIVE
+description: >
+  Pactus is an open-source, layer-1 blockchain technology with a revolutionary,
+  secure, Solid State Proof of Stake Consensus.
+website: https://pactus.org
+explorer: https://pacviewer.com
+decimals: 9
+status: active
+

@@ -1,0 +1,13 @@
+id: binance_bnb
+name: Binance
+symbol: BNB
+asset_type: coin
+type: NATIVE
+description: >
+  Fast and secure decentralized digital asset exchange. The new crypto
+  currency trading standard is here.
+website: https://binance.org
+explorer: https://explorer.binance.org/
+decimals: 8
+status: inactive
+
