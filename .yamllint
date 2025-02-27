@@ -1,4 +1,8 @@
 extends: default
 
+rules:
+  document-start: disable
+
 ignore: |
   template/
+  .github/
