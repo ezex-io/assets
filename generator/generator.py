@@ -42,9 +42,33 @@ def escape_svg(svg: str) -> str:
     """Escape SVG content for Rust raw string literals."""
     return svg.replace('"', '\\"')  # Escape double quotes
 
+def update_lib_rs():
+    """Automatically updates lib.rs to include all generated blockchains."""
+    rust_src_dir = Path("gen/rust/src")
+    lib_rs_path = rust_src_dir / "lib.rs"
+
+    # Find all blockchain files (*.rs) in src/
+    blockchain_files = [f.stem for f in rust_src_dir.glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset"]]
+
+    # Generate the new lib.rs content
+    content = """// Code generated automatically. DO NOT EDIT.
+
+pub mod types;
+pub mod blockchain;
+pub mod asset;
+
+""" + "\n".join([f"pub mod {blockchain};" for blockchain in blockchain_files]) + "\n"
+
+    # Write to lib.rs
+    with open(lib_rs_path, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    print(f"✅ Updated {lib_rs_path}")
+
+
 def process_chain(chain_path, language):
     """Process a blockchain directory and generate a file in the specified language."""
-    chain_name = chain_path.stem  # Extract blockchain name from directory
+    chain_name = chain_path.stem  # Get chain name from directory
     print(f"🔍 Processing {chain_name} for {language}...")
 
     # Read blockchain info.yml
@@ -55,10 +79,8 @@ def process_chain(chain_path, language):
 
     chain_info = read_yaml(chain_info_path)
 
-    # Read blockchain logo and escape for Rust if needed
-    chain_logo = encode_svg(chain_path / "logo.svg")
-    if language == "rust":
-        chain_logo = escape_svg(chain_logo)
+    # Read and escape blockchain logo SVG
+    chain_logo = escape_svg(encode_svg(chain_path / "logo.svg"))
 
     # Process assets
     assets = []
@@ -72,9 +94,7 @@ def process_chain(chain_path, language):
                 continue
 
             asset_info = read_yaml(asset_info_path)
-            asset_icon = encode_svg(asset_path / "icon.svg")
-            if language == "rust":
-                asset_icon = escape_svg(asset_icon)
+            asset_icon = escape_svg(encode_svg(asset_path / "icon.svg"))
 
             assets.append({
                 "StructName": f"{chain_name.capitalize()}{asset_info['symbol'].upper()}Asset",
@@ -88,20 +108,31 @@ def process_chain(chain_path, language):
                 "Explorer": asset_info.get("explorer", ""),
                 "Decimals": asset_info.get("decimals", 0),
                 "Status": asset_info.get("status", ""),
-                "Icon": asset_icon  # ✅ Escaped if Rust
+                "Icon": asset_icon  # ✅ Now properly escaped
             })
 
-    # Select template based on language
+    # Select output directory and file extension based on language
     if language == "go":
-        template = go_template
-        output_dir = GEN_GOLANG_DIR
+        template_file = "go.tmpl"
+        output_dir = "gen/golang"
         file_extension = ".gen.go"
     elif language == "rust":
-        template = rust_template
-        output_dir = GEN_RUST_DIR
-        file_extension = ".gen.rs"
+        template_file = "rust.tmpl"
+        output_dir = "gen/rust/src"
+        file_extension = ".rs"
     else:
         print(f"❌ Error: Unsupported language '{language}'")
+        return
+
+    # Ensure output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Load Jinja2 environment and template
+    env = Environment(loader=FileSystemLoader("generator/templates"), trim_blocks=True, lstrip_blocks=True)
+    try:
+        template = env.get_template(template_file)
+    except TemplateSyntaxError as e:
+        print(f"❌ Jinja2 Template Syntax Error: {e.message} on line {e.lineno}")
         return
 
     # Generate the code
@@ -117,18 +148,22 @@ def process_chain(chain_path, language):
             Decimals=chain_info["decimals"],
             Links=chain_info.get("links", []),
             Assets=assets,
-            Logo=chain_logo  # ✅ Now the SVG is escaped for Rust if needed
+            Logo=chain_logo  # ✅ Ensuring SVG is correctly escaped for Rust
         )
     except Exception as e:
         print(f"❌ Jinja2 Rendering Error: {e}")
         return
 
-    # Write to file
+    # Write to output file
     output_file = Path(output_dir) / f"{chain_name}{file_extension}"
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(generated_code)
 
     print(f"✅ Generated {output_file}")
+
+    # If Rust, update lib.rs
+    if language == "rust":
+        update_lib_rs()
 
 def main():
     """Main function to process a specific chain passed as an argument."""

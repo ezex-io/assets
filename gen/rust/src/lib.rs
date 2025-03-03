@@ -1,4 +1,9 @@
+// Code generated automatically. DO NOT EDIT.
+
 pub mod types;
 pub mod blockchain;
 pub mod asset;
-mod pactus;
+
+pub mod binance;
+pub mod bitcoin;
+pub mod pactus;
