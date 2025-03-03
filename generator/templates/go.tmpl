@@ -46,7 +46,7 @@ func (*{{ StructName }}) Logo() string {
 	return raw{{ StructName }}Logo
 }
 
-func (p *{{ StructName }}) Assets() []Asset {
+func (*{{ StructName }}) Assets() []Asset {
 	return []Asset{
 		{% for asset in Assets %}
 		&{{ asset.StructName }}{},
@@ -54,7 +54,7 @@ func (p *{{ StructName }}) Assets() []Asset {
 	}
 }
 
-func (p *{{ StructName }}) Asset(id string) Asset {
+func (*{{ StructName }}) Asset(id string) Asset {
 	switch id {
 	{% for asset in Assets %}
 	case "{{ asset.ID }}":
