@@ -152,10 +152,10 @@ func (*BitcoinBlockchain) Decimals() uint {
 
 func (*BitcoinBlockchain) Links() []Link {
 	return []Link{
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
+		{Name: "github", URL: "https://github.com/bitcoin"},
+		{Name: "twitter", URL: "https://twitter.com/Bitcoin"},
+		{Name: "reddit", URL: "https://reddit.com/r/Bitcoin"},
+		{Name: "whitepaper", URL: "https://bitcoin.org/bitcoin.pdf"},
 	}
 }
 

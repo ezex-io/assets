@@ -292,10 +292,10 @@ func (*BinanceBlockchain) Decimals() uint {
 
 func (*BinanceBlockchain) Links() []Link {
 	return []Link{
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
-		{Name: "", URL: ""},
+		{Name: "github", URL: "https://github.com/binance-chain/"},
+		{Name: "twitter", URL: "https://twitter.com/binance_dex"},
+		{Name: "reddit", URL: "https://reddit.com/r/BinanceExchange"},
+		{Name: "whitepaper", URL: "https://www.binance.com/resources/ico/Binance_WhitePaper_en.pdf"},
 	}
 }
 

@@ -23,6 +23,4 @@ links:
   - name: source_code
     url: https://github.com/pactus-project/pactus
   - name: whitepaper
-    url: >
-        https://github.com/pactus-project/Whitepaper/releases/latest/
-        download/pactus_whitepaper.pdf
+    url: https://github.com/pactus-project/Whitepaper/releases/latest/download/pactus_whitepaper.pdf

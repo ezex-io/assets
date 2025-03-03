@@ -37,7 +37,7 @@ func (*{{ StructName }}) Decimals() uint {
 func (*{{ StructName }}) Links() []Link {
 	return []Link{
 		{% for link in Links %}
-		{Name: "{{ link.Name }}", URL: "{{ link.URL }}"},
+		{Name: "{{ link['name'] }}", URL: "{{ link['url'] }}"},
 		{% endfor %}
 	}
 }

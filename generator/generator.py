@@ -5,8 +5,8 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, TemplateSyntaxError
 
 # Paths
-GEN_DIR = "../gen/golang"
-TEMPLATE_DIR = "./templates"
+GEN_DIR = "gen/golang"
+TEMPLATE_DIR = "generator/templates"
 TEMPLATE_FILE = "go.tmpl"
 
 # Ensure output directory exists
@@ -45,6 +45,12 @@ def process_chain(chain_path):
         return
 
     chain_info = read_yaml(chain_info_path)
+
+    # Ensure links are parsed correctly
+    links = chain_info.get("links", [])
+    if not isinstance(links, list):
+        print(f"⚠️ Warning: Links should be a list in {chain_info_path}, got {type(links)} instead.")
+        links = []  # Default to an empty list
 
     # Read blockchain logo
     chain_logo = encode_svg(chain_path / "logo.svg")
@@ -88,7 +94,7 @@ def process_chain(chain_path):
             Explorer=chain_info["explorer"],
             Symbol=chain_info["symbol"],
             Decimals=chain_info["decimals"],
-            Links=chain_info.get("links", []),
+            Links=links,  # ✅ Pass the properly parsed links
             Assets=assets,
             Logo=chain_logo
         )
