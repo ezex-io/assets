@@ -1,0 +1,84 @@
+// Code generated automatically. DO NOT EDIT.
+
+package golang
+
+type {{ StructName }} struct{}
+
+const raw{{ StructName }}Logo = `{{ Logo }}`
+
+func {{ FactoryFunc }}() Blockchain {
+	return &{{ StructName }}{}
+}
+
+func (*{{ StructName }}) Name() string {
+	return "{{ Name }}"
+}
+
+func (*{{ StructName }}) Description() string {
+	return `{{ Description }}`
+}
+
+func (*{{ StructName }}) Website() string {
+	return "{{ Website }}"
+}
+
+func (*{{ StructName }}) Explorer() string {
+	return "{{ Explorer }}"
+}
+
+func (*{{ StructName }}) Symbol() string {
+	return "{{ Symbol }}"
+}
+
+func (*{{ StructName }}) Decimals() uint {
+	return {{ Decimals }}
+}
+
+func (*{{ StructName }}) Links() []Link {
+	return []Link{
+		{% for link in Links %}
+		{Name: "{{ link.Name }}", URL: "{{ link.URL }}"},
+		{% endfor %}
+	}
+}
+
+func (*{{ StructName }}) Logo() string {
+	return raw{{ StructName }}Logo
+}
+
+func (p *{{ StructName }}) Assets() []Asset {
+	return []Asset{
+		{% for asset in Assets %}
+		&{{ asset.StructName }}{},
+		{% endfor %}
+	}
+}
+
+func (p *{{ StructName }}) Asset(id string) Asset {
+	switch id {
+	{% for asset in Assets %}
+	case "{{ asset.ID }}":
+		return &{{ asset.StructName }}{}
+	{% endfor %}
+	default:
+		return nil
+	}
+}
+
+{% for asset in Assets %}
+
+type {{ asset.StructName }} struct{}
+
+const raw{{ asset.StructName }} = `{{ asset.Icon }}`
+
+func (*{{ asset.StructName }}) ID() string        { return "{{ asset.ID }}" }
+func (*{{ asset.StructName }}) Name() string      { return "{{ asset.Name }}" }
+func (*{{ asset.StructName }}) Symbol() string    { return "{{ asset.Symbol }}" }
+func (*{{ asset.StructName }}) Type() AssetType   { return "{{ asset.Type }}" }
+func (*{{ asset.StructName }}) Description() string { return `{{ asset.Description }}` }
+func (*{{ asset.StructName }}) Website() string   { return "{{ asset.Website }}" }
+func (*{{ asset.StructName }}) Explorer() string  { return "{{ asset.Explorer }}" }
+func (*{{ asset.StructName }}) Decimals() uint    { return {{ asset.Decimals }} }
+func (*{{ asset.StructName }}) Status() string    { return "{{ asset.Status }}" }
+func (*{{ asset.StructName }}) Icon() string      { return raw{{ asset.StructName }} }
+{% endfor %}
