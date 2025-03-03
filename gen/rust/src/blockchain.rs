@@ -1,5 +1,5 @@
-use crate::types::{Link};
 use crate::asset::Asset;
+use crate::types::Link;
 
 pub trait Blockchain {
     fn name(&self) -> &str;

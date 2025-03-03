@@ -94,17 +94,21 @@ var Blockchains = map[string]Blockchain{
 use std::collections::HashMap;
 use std::sync::Arc;
 use crate::blockchain::Blockchain;
+"""
+    # Add imports for all blockchains
+    rust_content += "\n".join([f'use crate::{chain}::{chain.capitalize()}Blockchain;' for chain in blockchain_files]) + "\n\n"
 
-pub fn get_blockchains() -> HashMap<String, Arc<dyn Blockchain>> {
+    rust_content += """pub fn get_blockchains() -> HashMap<String, Arc<dyn Blockchain>> {
     let mut map: HashMap<String, Arc<dyn Blockchain>> = HashMap::new();
 """
-    rust_content += "\n".join([f'    map.insert("{chain}".to_string(), Arc::new({chain.capitalize()}Blockchain));' for chain in blockchain_files])
+    rust_content += "\n".join([f'    map.insert("{chain}".to_string(), Arc::new({chain.capitalize()}Blockchain {{}}));' for chain in blockchain_files])
     rust_content += "\n    map\n}\n"
 
     with open(rust_output_file, "w", encoding="utf-8") as f:
         f.write(rust_content)
 
     print(f"✅ Updated {rust_output_file}")
+
 
 def process_chain(chain_path, language):
     """Process a blockchain directory and generate a file in the specified language."""

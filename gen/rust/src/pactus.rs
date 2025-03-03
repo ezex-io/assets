@@ -1,8 +1,8 @@
 // Code generated automatically. DO NOT EDIT.
 
-use crate::types::{AssetType, Link};
-use crate::blockchain::Blockchain;
 use crate::asset::Asset;
+use crate::blockchain::Blockchain;
+use crate::types::{AssetType, Link};
 
 /// Pactus Blockchain Implementation
 pub struct PactusBlockchain;
@@ -54,9 +54,7 @@ impl Blockchain for PactusBlockchain {
     }
 
     fn assets(&self) -> Vec<Box<dyn Asset>> {
-        vec![
-            Box::new(PactusPACAsset),
-        ]
+        vec![Box::new(PactusPACAsset)]
     }
 
     fn asset(&self, id: &str) -> Option<Box<dyn Asset>> {
@@ -67,10 +65,9 @@ impl Blockchain for PactusBlockchain {
     }
 
     fn logo(&self) -> &str {
-            LOGO_SVG
+        LOGO_SVG
     }
 }
-
 
 /// Pactus Asset Implementation
 pub struct PactusPACAsset;
@@ -125,6 +122,6 @@ impl Asset for PactusPACAsset {
     }
 
     fn icon(&self) -> &str {
-            ICON_PACTUSPACASSET
+        ICON_PACTUSPACASSET
     }
 }
