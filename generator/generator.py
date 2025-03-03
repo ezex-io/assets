@@ -75,6 +75,7 @@ def process_chain(chain_path):
                 "Name": asset_info["name"],
                 "Symbol": asset_info["symbol"],
                 "Type": asset_info.get("type", ""),
+                "AssetType": asset_info.get("asset_type", ""),
                 "Description": asset_info.get("description", ""),
                 "Website": asset_info.get("website", ""),
                 "Explorer": asset_info.get("explorer", ""),

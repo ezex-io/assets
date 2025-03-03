@@ -20,7 +20,8 @@ type Asset interface {
 	Description() string
 	Symbol() string
 	Decimals() uint
-	Type() AssetType
+	Type() string
+	AssetType() AssetType
 	Website() string
 	Explorer() string
 	Status() string

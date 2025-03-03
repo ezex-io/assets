@@ -82,14 +82,15 @@ const rawPactusPACAsset = `<?xml version="1.0" encoding="UTF-8"?>
 </svg>
 `
 
-func (*PactusPACAsset) ID() string        { return "pactus_pac" }
-func (*PactusPACAsset) Name() string      { return "Pactus" }
-func (*PactusPACAsset) Symbol() string    { return "PAC" }
-func (*PactusPACAsset) Type() AssetType   { return "NATIVE" }
-func (*PactusPACAsset) Description() string { return `Pactus is an open-source, layer-1 blockchain technology with a revolutionary, secure, Solid State Proof of Stake Consensus.
+func (*PactusPACAsset) ID() string             { return "pactus_pac" }
+func (*PactusPACAsset) Name() string           { return "Pactus" }
+func (*PactusPACAsset) Symbol() string         { return "PAC" }
+func (*PactusPACAsset) Type() string           { return "NATIVE" }
+func (*PactusPACAsset) AssetType() AssetType   { return "coin" }
+func (*PactusPACAsset) Description() string    { return `Pactus is an open-source, layer-1 blockchain technology with a revolutionary, secure, Solid State Proof of Stake Consensus.
 ` }
-func (*PactusPACAsset) Website() string   { return "https://pactus.org" }
-func (*PactusPACAsset) Explorer() string  { return "https://pacviewer.com" }
-func (*PactusPACAsset) Decimals() uint    { return 9 }
-func (*PactusPACAsset) Status() string    { return "active" }
-func (*PactusPACAsset) Icon() string      { return rawPactusPACAsset }
+func (*PactusPACAsset) Website() string        { return "https://pactus.org" }
+func (*PactusPACAsset) Explorer() string       { return "https://pacviewer.com" }
+func (*PactusPACAsset) Decimals() uint         { return 9 }
+func (*PactusPACAsset) Status() string         { return "active" }
+func (*PactusPACAsset) Icon() string           { return rawPactusPACAsset }

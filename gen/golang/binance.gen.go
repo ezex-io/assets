@@ -581,17 +581,18 @@ const rawBinanceBNBAsset = `<?xml version="1.0" encoding="UTF-8"?>
 </svg>
 `
 
-func (*BinanceBNBAsset) ID() string        { return "binance_bnb" }
-func (*BinanceBNBAsset) Name() string      { return "Binance" }
-func (*BinanceBNBAsset) Symbol() string    { return "BNB" }
-func (*BinanceBNBAsset) Type() AssetType   { return "NATIVE" }
-func (*BinanceBNBAsset) Description() string { return `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
+func (*BinanceBNBAsset) ID() string             { return "binance_bnb" }
+func (*BinanceBNBAsset) Name() string           { return "Binance" }
+func (*BinanceBNBAsset) Symbol() string         { return "BNB" }
+func (*BinanceBNBAsset) Type() string           { return "NATIVE" }
+func (*BinanceBNBAsset) AssetType() AssetType   { return "coin" }
+func (*BinanceBNBAsset) Description() string    { return `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 ` }
-func (*BinanceBNBAsset) Website() string   { return "https://binance.org" }
-func (*BinanceBNBAsset) Explorer() string  { return "https://explorer.binance.org/" }
-func (*BinanceBNBAsset) Decimals() uint    { return 8 }
-func (*BinanceBNBAsset) Status() string    { return "inactive" }
-func (*BinanceBNBAsset) Icon() string      { return rawBinanceBNBAsset }
+func (*BinanceBNBAsset) Website() string        { return "https://binance.org" }
+func (*BinanceBNBAsset) Explorer() string       { return "https://explorer.binance.org/" }
+func (*BinanceBNBAsset) Decimals() uint         { return 8 }
+func (*BinanceBNBAsset) Status() string         { return "inactive" }
+func (*BinanceBNBAsset) Icon() string           { return rawBinanceBNBAsset }
 
 type BinanceUSDTAsset struct{}
 
@@ -761,14 +762,15 @@ const rawBinanceUSDTAsset = `<?xml version="1.0" encoding="UTF-8"?>
 </svg>
 `
 
-func (*BinanceUSDTAsset) ID() string        { return "binance_usdt" }
-func (*BinanceUSDTAsset) Name() string      { return "Binance Tether" }
-func (*BinanceUSDTAsset) Symbol() string    { return "USDT" }
-func (*BinanceUSDTAsset) Type() AssetType   { return "BEP20" }
-func (*BinanceUSDTAsset) Description() string { return `Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
+func (*BinanceUSDTAsset) ID() string             { return "binance_usdt" }
+func (*BinanceUSDTAsset) Name() string           { return "Binance Tether" }
+func (*BinanceUSDTAsset) Symbol() string         { return "USDT" }
+func (*BinanceUSDTAsset) Type() string           { return "BEP20" }
+func (*BinanceUSDTAsset) AssetType() AssetType   { return "token" }
+func (*BinanceUSDTAsset) Description() string    { return `Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
 ` }
-func (*BinanceUSDTAsset) Website() string   { return "https://tether.to/" }
-func (*BinanceUSDTAsset) Explorer() string  { return "https://explorer.binance.org/asset/USDT-6D8" }
-func (*BinanceUSDTAsset) Decimals() uint    { return 8 }
-func (*BinanceUSDTAsset) Status() string    { return "active" }
-func (*BinanceUSDTAsset) Icon() string      { return rawBinanceUSDTAsset }
+func (*BinanceUSDTAsset) Website() string        { return "https://tether.to/" }
+func (*BinanceUSDTAsset) Explorer() string       { return "https://explorer.binance.org/asset/USDT-6D8" }
+func (*BinanceUSDTAsset) Decimals() uint         { return 8 }
+func (*BinanceUSDTAsset) Status() string         { return "active" }
+func (*BinanceUSDTAsset) Icon() string           { return rawBinanceUSDTAsset }

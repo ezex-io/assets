@@ -298,14 +298,15 @@ const rawBitcoinBTCAsset = `<?xml version="1.0" encoding="UTF-8"?>
 </svg>
 `
 
-func (*BitcoinBTCAsset) ID() string        { return "bitcoin_btc" }
-func (*BitcoinBTCAsset) Name() string      { return "Bitcoin" }
-func (*BitcoinBTCAsset) Symbol() string    { return "BTC" }
-func (*BitcoinBTCAsset) Type() AssetType   { return "NATIVE" }
-func (*BitcoinBTCAsset) Description() string { return `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
+func (*BitcoinBTCAsset) ID() string             { return "bitcoin_btc" }
+func (*BitcoinBTCAsset) Name() string           { return "Bitcoin" }
+func (*BitcoinBTCAsset) Symbol() string         { return "BTC" }
+func (*BitcoinBTCAsset) Type() string           { return "NATIVE" }
+func (*BitcoinBTCAsset) AssetType() AssetType   { return "coin" }
+func (*BitcoinBTCAsset) Description() string    { return `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
 ` }
-func (*BitcoinBTCAsset) Website() string   { return "https://bitcoin.org" }
-func (*BitcoinBTCAsset) Explorer() string  { return "https://blockchain.info" }
-func (*BitcoinBTCAsset) Decimals() uint    { return 8 }
-func (*BitcoinBTCAsset) Status() string    { return "active" }
-func (*BitcoinBTCAsset) Icon() string      { return rawBitcoinBTCAsset }
+func (*BitcoinBTCAsset) Website() string        { return "https://bitcoin.org" }
+func (*BitcoinBTCAsset) Explorer() string       { return "https://blockchain.info" }
+func (*BitcoinBTCAsset) Decimals() uint         { return 8 }
+func (*BitcoinBTCAsset) Status() string         { return "active" }
+func (*BitcoinBTCAsset) Icon() string           { return rawBitcoinBTCAsset }
