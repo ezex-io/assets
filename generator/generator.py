@@ -5,18 +5,23 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, TemplateSyntaxError
 
 # Paths
-GEN_DIR = "gen/golang"
+GEN_GOLANG_DIR = "gen/golang"
+GEN_RUST_DIR = "gen/rust/src"
 TEMPLATE_DIR = "generator/templates"
-TEMPLATE_FILE = "go.tmpl"
+GO_TEMPLATE_FILE = "go.tmpl"
+RUST_TEMPLATE_FILE = "rust.tmpl"
 
-# Ensure output directory exists
-os.makedirs(GEN_DIR, exist_ok=True)
+# Ensure output directories exist
+os.makedirs(GEN_GOLANG_DIR, exist_ok=True)
+os.makedirs(GEN_RUST_DIR, exist_ok=True)
 
-# Load Jinja2 environment and template
+# Load Jinja2 environment
 env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=True, lstrip_blocks=True)
 
+# Load Templates
 try:
-    template = env.get_template(TEMPLATE_FILE)
+    go_template = env.get_template(GO_TEMPLATE_FILE)
+    rust_template = env.get_template(RUST_TEMPLATE_FILE)
 except TemplateSyntaxError as e:
     print(f"❌ Jinja2 Template Syntax Error: {e.message} on line {e.lineno}")
     exit(1)
@@ -33,10 +38,14 @@ def encode_svg(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         return f.read()
 
-def process_chain(chain_path):
-    """Process a blockchain directory and generate a Go file."""
-    chain_name = chain_path.stem  # Get the chain name from the path
-    print(f"🔍 Processing {chain_name}...")
+def escape_svg(svg: str) -> str:
+    """Escape SVG content for Rust raw string literals."""
+    return svg.replace('"', '\\"')  # Escape double quotes
+
+def process_chain(chain_path, language):
+    """Process a blockchain directory and generate a file in the specified language."""
+    chain_name = chain_path.stem  # Extract blockchain name from directory
+    print(f"🔍 Processing {chain_name} for {language}...")
 
     # Read blockchain info.yml
     chain_info_path = chain_path / "info.yml"
@@ -46,14 +55,10 @@ def process_chain(chain_path):
 
     chain_info = read_yaml(chain_info_path)
 
-    # Ensure links are parsed correctly
-    links = chain_info.get("links", [])
-    if not isinstance(links, list):
-        print(f"⚠️ Warning: Links should be a list in {chain_info_path}, got {type(links)} instead.")
-        links = []  # Default to an empty list
-
-    # Read blockchain logo
+    # Read blockchain logo and escape for Rust if needed
     chain_logo = encode_svg(chain_path / "logo.svg")
+    if language == "rust":
+        chain_logo = escape_svg(chain_logo)
 
     # Process assets
     assets = []
@@ -68,6 +73,8 @@ def process_chain(chain_path):
 
             asset_info = read_yaml(asset_info_path)
             asset_icon = encode_svg(asset_path / "icon.svg")
+            if language == "rust":
+                asset_icon = escape_svg(asset_icon)
 
             assets.append({
                 "StructName": f"{chain_name.capitalize()}{asset_info['symbol'].upper()}Asset",
@@ -81,12 +88,25 @@ def process_chain(chain_path):
                 "Explorer": asset_info.get("explorer", ""),
                 "Decimals": asset_info.get("decimals", 0),
                 "Status": asset_info.get("status", ""),
-                "Icon": asset_icon
+                "Icon": asset_icon  # ✅ Escaped if Rust
             })
 
-    # Generate the Go file
+    # Select template based on language
+    if language == "go":
+        template = go_template
+        output_dir = GEN_GOLANG_DIR
+        file_extension = ".gen.go"
+    elif language == "rust":
+        template = rust_template
+        output_dir = GEN_RUST_DIR
+        file_extension = ".gen.rs"
+    else:
+        print(f"❌ Error: Unsupported language '{language}'")
+        return
+
+    # Generate the code
     try:
-        go_code = template.render(
+        generated_code = template.render(
             StructName=f"{chain_name.capitalize()}Blockchain",
             FactoryFunc=chain_name.capitalize(),
             Name=chain_info["name"],
@@ -95,25 +115,26 @@ def process_chain(chain_path):
             Explorer=chain_info["explorer"],
             Symbol=chain_info["symbol"],
             Decimals=chain_info["decimals"],
-            Links=links,  # ✅ Pass the properly parsed links
+            Links=chain_info.get("links", []),
             Assets=assets,
-            Logo=chain_logo
+            Logo=chain_logo  # ✅ Now the SVG is escaped for Rust if needed
         )
     except Exception as e:
         print(f"❌ Jinja2 Rendering Error: {e}")
         return
 
     # Write to file
-    output_file = Path(GEN_DIR) / f"{chain_name}.gen.go"
+    output_file = Path(output_dir) / f"{chain_name}{file_extension}"
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write(go_code)
+        f.write(generated_code)
 
     print(f"✅ Generated {output_file}")
 
 def main():
     """Main function to process a specific chain passed as an argument."""
-    parser = argparse.ArgumentParser(description="Generate Go files for a specific blockchain")
+    parser = argparse.ArgumentParser(description="Generate Go or Rust files for a specific blockchain")
     parser.add_argument("--chain", type=str, required=True, help="Path to the blockchain directory (e.g., chains/bitcoin)")
+    parser.add_argument("--lang", type=str, choices=["go", "rust"], required=True, help="Target language (go or rust)")
 
     args = parser.parse_args()
     chain_path = Path(args.chain)
@@ -122,7 +143,7 @@ def main():
         print(f"❌ Error: Chain directory '{args.chain}' does not exist!")
         return
 
-    process_chain(chain_path)
+    process_chain(chain_path, args.lang)
 
 if __name__ == "__main__":
     main()
