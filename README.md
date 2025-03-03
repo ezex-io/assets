@@ -5,7 +5,7 @@ It supports **automatic code generation** for **Go** and **Rust** implementation
 ---
 
 ## **📌 Generating a Blockchain**
-To generate **Go** or **Rust** code for a specific blockchain, run:
+To generate **Go** or **Rust** and **typescript** code for a specific blockchain, run:
 
 ```shell
 python3 generator/generator.py --chain chains/bitcoin --lang go
@@ -13,6 +13,10 @@ python3 generator/generator.py --chain chains/bitcoin --lang go
 ```shell
 python3 generator/generator.py --chain chains/bitcoin --lang rust
 ```
+```shell
+python3 generator/generator.py --chain chains/bitcoin --lang ts
+```
+
 Replace `chains/bitcoin` with the path to the blockchain you want to generate.
 
 ---
@@ -42,11 +46,9 @@ for chain in chains/*; do
 done
 ```
 
----
-
-## **🛠️ Running the Rust Code**
-After generating Rust files, navigate to the `gen/rust/` directory and run:
+To generate **Typescript** files for all blockchains:
 ```shell
-cd gen/rust
-cargo check
+for chain in chains/*; do
+    python3 generator/generator.py --chain "$chain" --lang ts
+done
 ```
