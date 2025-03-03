@@ -1,0 +1,47 @@
+// Code generated automatically. DO NOT EDIT.
+
+import { Blockchain, Asset, Link } from "./blockchain";
+
+/**
+ * {{ Name }} Blockchain Implementation
+ */
+export class {{ StructName }} implements Blockchain {
+    name: string = "{{ Name }}";
+    description: string = `{{ Description }}`;
+    website: string = "{{ Website }}";
+    explorer: string = "{{ Explorer }}";
+    symbol: string = "{{ Symbol }}";
+    decimals: number = {{ Decimals }};
+    logo: string = `{{ Logo }}`;
+
+    links: Link[] = [
+    {% for link in Links %}
+        { name: "{{ link.name }}", url: "{{ link.url }}" },
+    {% endfor %}
+    ];
+
+    assets: Asset[] = [
+    {% for asset in Assets %}
+        new {{ asset.StructName }}(),
+    {% endfor %}
+    ];
+}
+
+/**
+ * {{ Name }} Asset Implementation
+ */
+{% for asset in Assets %}
+export class {{ asset.StructName }} implements Asset {
+    id: string = "{{ asset.ID }}";
+    name: string = "{{ asset.Name }}";
+    symbol: string = "{{ asset.Symbol }}";
+    type: string = "{{ asset.Type }}";
+    assetType: string = "{{ asset.AssetType }}";
+    description: string = `{{ asset.Description }}`;
+    website: string = "{{ asset.Website }}";
+    explorer: string = "{{ asset.Explorer }}";
+    decimals: number = {{ asset.Decimals }};
+    status: string = "{{ asset.Status }}";
+    icon: string = `{{ asset.Icon }}`;
+}
+{% endfor %}
