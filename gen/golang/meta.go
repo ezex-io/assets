@@ -3,7 +3,7 @@
 package golang
 
 var Blockchains = map[string]Blockchain{
-    "binance.gen": Binance.gen(),
-    "bitcoin.gen": Bitcoin.gen(),
-    "pactus.gen": Pactus.gen(),
+    "binance": Binance(),
+    "bitcoin": Bitcoin(),
+    "pactus": Pactus(),
 }

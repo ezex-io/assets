@@ -166,8 +166,8 @@ def update_meta_files(lang):
         ]
     elif lang == "go":
         blockchain_files = [
-            f.stem for f in Path("gen/golang").glob("*.gen.go")
-            if f.stem not in ["meta", "types"]
+            f.stem.replace(".gen", "")
+            for f in Path("gen/golang").glob("*.gen.go")
         ]
     else:
         print(f"⚠️ Skipping meta file update: Unsupported language '{lang}'")
@@ -182,9 +182,9 @@ package golang
 var Blockchains = map[string]Blockchain{
 """
         go_content += "\n".join([
-            f'    "{chain}": {chain.capitalize()}(),'
-            for chain in blockchain_files
-        ])
+                    f'    "{chain}": {chain.capitalize()}(),'
+                    for chain in blockchain_files
+                ])
         go_content += "\n}\n"
 
         with open(go_output_file, "w", encoding="utf-8") as f:
