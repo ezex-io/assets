@@ -65,6 +65,46 @@ pub mod asset;
 
     print(f"✅ Updated {lib_rs_path}")
 
+def update_meta_files():
+    """Automatically updates meta.go and meta.rs to include all generated blockchains."""
+    go_output_file = Path("gen/golang/meta.go")
+    rust_output_file = Path("gen/rust/src/meta.rs")
+
+    rust_src_dir = Path("gen/rust/src")
+    blockchain_files = [f.stem for f in rust_src_dir.glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset", "meta"]]
+
+    # ✅ Generate meta.go for Go
+    go_content = """// Code generated automatically. DO NOT EDIT.
+
+package golang
+
+var Blockchains = map[string]Blockchain{
+"""
+    go_content += "\n".join([f'    "{chain}": {chain.capitalize()}(),' for chain in blockchain_files])
+    go_content += "\n}\n"
+
+    with open(go_output_file, "w", encoding="utf-8") as f:
+        f.write(go_content)
+
+    print(f"✅ Updated {go_output_file}")
+
+    # ✅ Generate meta.rs for Rust
+    rust_content = """// Code generated automatically. DO NOT EDIT.
+
+use std::collections::HashMap;
+use std::sync::Arc;
+use crate::blockchain::Blockchain;
+
+pub fn get_blockchains() -> HashMap<String, Arc<dyn Blockchain>> {
+    let mut map: HashMap<String, Arc<dyn Blockchain>> = HashMap::new();
+"""
+    rust_content += "\n".join([f'    map.insert("{chain}".to_string(), Arc::new({chain.capitalize()}Blockchain));' for chain in blockchain_files])
+    rust_content += "\n    map\n}\n"
+
+    with open(rust_output_file, "w", encoding="utf-8") as f:
+        f.write(rust_content)
+
+    print(f"✅ Updated {rust_output_file}")
 
 def process_chain(chain_path, language):
     """Process a blockchain directory and generate a file in the specified language."""
@@ -164,6 +204,8 @@ def process_chain(chain_path, language):
     # If Rust, update lib.rs
     if language == "rust":
         update_lib_rs()
+
+    update_meta_files()
 
 def main():
     """Main function to process a specific chain passed as an argument."""

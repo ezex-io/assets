@@ -6,4 +6,5 @@ pub mod asset;
 
 pub mod binance;
 pub mod bitcoin;
+pub mod meta;
 pub mod pactus;
