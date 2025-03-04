@@ -7,7 +7,7 @@ rules:
     level: error
 
 ignore: |
-  template/
+  docs/
   .github/
-  gen/
-  generator/
+  codegen/
+  tools/

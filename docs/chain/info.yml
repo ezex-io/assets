@@ -2,10 +2,7 @@ id:
 name: 
 website: 
 description: 
-explorer: 
-symbol: 
-asset_type: coin
-decimals: 9
+explorer:
 links:
 - name: 
   url: 
