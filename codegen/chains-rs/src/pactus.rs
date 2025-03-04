@@ -63,7 +63,6 @@ impl Blockchain for PactusBlockchain {
     }
 }
 
-
 /// Pactus Asset Implementation
 pub struct PactusPACAsset;
 

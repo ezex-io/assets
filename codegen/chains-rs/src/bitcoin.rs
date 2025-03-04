@@ -169,7 +169,6 @@ impl Blockchain for BitcoinBlockchain {
     }
 }
 
-
 /// Bitcoin Asset Implementation
 pub struct BitcoinBTCAsset;
 

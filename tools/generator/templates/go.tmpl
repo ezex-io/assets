@@ -58,7 +58,6 @@ func (*{{ StructName }}) Asset(id string) Asset {
 }
 
 {% for asset in Assets %}
-
 type {{ asset.StructName }} struct{}
 
 const raw{{ asset.StructName }} = `{{ asset.Icon }}`

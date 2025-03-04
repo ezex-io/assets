@@ -313,7 +313,6 @@ func (*BinanceBlockchain) Asset(id string) Asset {
 	}
 }
 
-
 type BinanceBNBAsset struct{}
 
 const rawBinanceBNBAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -585,7 +584,6 @@ func (*BinanceBNBAsset) Website() string        { return "https://binance.org" }
 func (*BinanceBNBAsset) Explorer() string       { return "https://explorer.binance.org/" }
 func (*BinanceBNBAsset) Decimals() uint         { return 18 }
 func (*BinanceBNBAsset) Icon() string           { return rawBinanceBNBAsset }
-
 type BinanceUSDTAsset struct{}
 
 const rawBinanceUSDTAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>

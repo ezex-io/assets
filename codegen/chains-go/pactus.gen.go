@@ -64,7 +64,6 @@ func (*PactusBlockchain) Asset(id string) Asset {
 	}
 }
 
-
 type PactusPACAsset struct{}
 
 const rawPactusPACAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>

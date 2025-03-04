@@ -311,7 +311,6 @@ impl Blockchain for BinanceBlockchain {
     }
 }
 
-
 /// Binance Asset Implementation
 pub struct BinanceBNBAsset;
 
@@ -618,7 +617,6 @@ impl Asset for BinanceBNBAsset {
             ICON_BINANCEBNBASSET
     }
 }
-
 /// Tether USD Asset Implementation
 pub struct BinanceUSDTAsset;
 

@@ -170,7 +170,6 @@ func (*BitcoinBlockchain) Asset(id string) Asset {
 	}
 }
 
-
 type BitcoinBTCAsset struct{}
 
 const rawBitcoinBTCAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
