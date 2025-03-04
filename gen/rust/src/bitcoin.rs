@@ -1,8 +1,8 @@
 // Code generated automatically. DO NOT EDIT.
 
-use crate::asset::Asset;
-use crate::blockchain::Blockchain;
 use crate::types::{AssetType, Link};
+use crate::blockchain::Blockchain;
+use crate::asset::Asset;
 
 /// Bitcoin Blockchain Implementation
 pub struct BitcoinBlockchain;
@@ -152,27 +152,17 @@ impl Blockchain for BitcoinBlockchain {
 
     fn links(&self) -> Vec<Link> {
         vec![
-            Link {
-                name: "github".to_string(),
-                url: "https://github.com/bitcoin".to_string(),
-            },
-            Link {
-                name: "twitter".to_string(),
-                url: "https://twitter.com/Bitcoin".to_string(),
-            },
-            Link {
-                name: "reddit".to_string(),
-                url: "https://reddit.com/r/Bitcoin".to_string(),
-            },
-            Link {
-                name: "whitepaper".to_string(),
-                url: "https://bitcoin.org/bitcoin.pdf".to_string(),
-            },
+            Link { name: "github".to_string(), url: "https://github.com/bitcoin".to_string() },
+            Link { name: "twitter".to_string(), url: "https://twitter.com/Bitcoin".to_string() },
+            Link { name: "reddit".to_string(), url: "https://reddit.com/r/Bitcoin".to_string() },
+            Link { name: "whitepaper".to_string(), url: "https://bitcoin.org/bitcoin.pdf".to_string() },
         ]
     }
 
     fn assets(&self) -> Vec<Box<dyn Asset>> {
-        vec![Box::new(BitcoinBTCAsset)]
+        vec![
+            Box::new(BitcoinBTCAsset),
+        ]
     }
 
     fn asset(&self, id: &str) -> Option<Box<dyn Asset>> {
@@ -183,9 +173,10 @@ impl Blockchain for BitcoinBlockchain {
     }
 
     fn logo(&self) -> &str {
-        LOGO_SVG
+            LOGO_SVG
     }
 }
+
 
 /// Bitcoin Asset Implementation
 pub struct BitcoinBTCAsset;
@@ -350,6 +341,6 @@ impl Asset for BitcoinBTCAsset {
     }
 
     fn icon(&self) -> &str {
-        ICON_BITCOINBTCASSET
+            ICON_BITCOINBTCASSET
     }
 }
