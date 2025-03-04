@@ -10,8 +10,6 @@ export class {{ StructName }} implements Blockchain {
     description: string = `{{ Description }}`;
     website: string = "{{ Website }}";
     explorer: string = "{{ Explorer }}";
-    symbol: string = "{{ Symbol }}";
-    decimals: number = {{ Decimals }};
     logo: string = `{{ Logo }}`;
 
     links: Link[] = [
@@ -37,6 +35,7 @@ export class {{ asset.StructName }} implements Asset {
     symbol: string = "{{ asset.Symbol }}";
     type: string = "{{ asset.Type }}";
     assetType: string = "{{ asset.AssetType }}";
+    bip44CoinType: number = {{ asset.BIP44CoinType }};
     description: string = `{{ asset.Description }}`;
     website: string = "{{ asset.Website }}";
     explorer: string = "{{ asset.Explorer }}";

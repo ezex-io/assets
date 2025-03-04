@@ -4,11 +4,11 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, TemplateSyntaxError
 
 # Paths
-CHAINS_DIR = "chains"
-GEN_GOLANG_DIR = "gen/golang"
-GEN_RUST_DIR = "gen/rust/src"
-GEN_TYPESCRIPT_DIR = "gen/typescript/src"
-TEMPLATE_DIR = "generator/templates"
+CHAINS_DIR = "blockchains"
+GEN_GOLANG_DIR = "codegen/chains-go"
+GEN_RUST_DIR = "codegen/chains-rs/src"
+GEN_TYPESCRIPT_DIR = "codegen/chains-ts/src"
+TEMPLATE_DIR = "tools/generator/templates"
 GO_TEMPLATE_FILE = "go.tmpl"
 RUST_TEMPLATE_FILE = "rust.tmpl"
 TS_TEMPLATE_FILE = "ts.tmpl"
@@ -66,7 +66,7 @@ def update_meta_files(language):
         blockchain_files = [f.stem.replace(".gen", "") for f in Path(GEN_GOLANG_DIR).glob("*.gen.go")]
         content = """// Code generated automatically. DO NOT EDIT.
 
-package golang
+package chains
 
 var Blockchains = map[string]Blockchain{
 """ + "\n".join([f'    "{chain}": {chain.capitalize()}(),' for chain in blockchain_files]) + "\n}\n"
@@ -164,6 +164,7 @@ def process_chain(chain_path, language):
                 "Symbol": asset_info.get("symbol", ""),
                 "Type": asset_info.get("type", ""),
                 "AssetType": asset_info.get("asset_type", ""),
+                "BIP44CoinType": asset_info.get("bip44_coin_type", 0),
                 "Description": asset_info.get("description", ""),
                 "Website": asset_info.get("website", ""),
                 "Explorer": asset_info.get("explorer", ""),
@@ -197,8 +198,6 @@ def process_chain(chain_path, language):
             Description=chain_info.get("description", ""),
             Website=chain_info.get("website", ""),
             Explorer=chain_info.get("explorer", ""),
-            Symbol=chain_info.get("symbol", ""),
-            Decimals=chain_info.get("decimals", 0),
             Links=chain_info.get("links", []),
             Assets=assets,
             Logo=chain_logo

@@ -1,6 +1,6 @@
 // Code generated automatically. DO NOT EDIT.
 
-package golang
+package chains
 
 type {{ StructName }} struct{}
 
@@ -24,14 +24,6 @@ func (*{{ StructName }}) Website() string {
 
 func (*{{ StructName }}) Explorer() string {
 	return "{{ Explorer }}"
-}
-
-func (*{{ StructName }}) Symbol() string {
-	return "{{ Symbol }}"
-}
-
-func (*{{ StructName }}) Decimals() uint {
-	return {{ Decimals }}
 }
 
 func (*{{ StructName }}) Links() []Link {
@@ -76,6 +68,7 @@ func (*{{ asset.StructName }}) Name() string           { return "{{ asset.Name }
 func (*{{ asset.StructName }}) Symbol() string         { return "{{ asset.Symbol }}" }
 func (*{{ asset.StructName }}) Type() string           { return "{{ asset.Type }}" }
 func (*{{ asset.StructName }}) AssetType() AssetType   { return "{{ asset.AssetType }}" }
+func (*{{ asset.StructName }}) BIP44CoinType() int     { return {{ asset.BIP44CoinType }} }
 func (*{{ asset.StructName }}) Description() string    { return `{{ asset.Description }}` }
 func (*{{ asset.StructName }}) Website() string        { return "{{ asset.Website }}" }
 func (*{{ asset.StructName }}) Explorer() string       { return "{{ asset.Explorer }}" }

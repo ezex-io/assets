@@ -26,14 +26,6 @@ impl Blockchain for {{ StructName }} {
         "{{ Explorer }}"
     }
 
-    fn symbol(&self) -> &str {
-        "{{ Symbol }}"
-    }
-
-    fn decimals(&self) -> u32 {
-        {{ Decimals }}
-    }
-
     fn links(&self) -> Vec<Link> {
         vec![
             {% for link in Links %}
@@ -90,6 +82,10 @@ impl Asset for {{ asset.StructName }} {
 
     fn asset_kind(&self) -> &str {
         "{{ asset.Type }}"
+    }
+
+    fn bip44_coin_type(&self) -> isize {
+        {{ asset.BIP44CoinType }}
     }
 
     fn description(&self) -> &str {
