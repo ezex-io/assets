@@ -1,8 +1,8 @@
 [package]
 name = "chains-rs"
 version = "0.1.0"
-edition = "2021"
-authors = ["Pactus <info@pactus.org>"]
+edition = "2024"
+authors = ["ezex development team <info@ezex.io>"]
 description = "Blockchain and asset definitions in Rust"
 license = "MIT"
 repository = "https://github.com/ezex-io/chains"

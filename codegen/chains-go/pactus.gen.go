@@ -1,6 +1,6 @@
 // Code generated automatically. DO NOT EDIT.
 
-package golang
+package chains
 
 type PactusBlockchain struct{}
 
@@ -30,14 +30,6 @@ func (*PactusBlockchain) Website() string {
 
 func (*PactusBlockchain) Explorer() string {
 	return "https://pacviewer.com/"
-}
-
-func (*PactusBlockchain) Symbol() string {
-	return "PAC"
-}
-
-func (*PactusBlockchain) Decimals() uint {
-	return 9
 }
 
 func (*PactusBlockchain) Links() []Link {
@@ -87,10 +79,11 @@ func (*PactusPACAsset) Name() string           { return "Pactus" }
 func (*PactusPACAsset) Symbol() string         { return "PAC" }
 func (*PactusPACAsset) Type() string           { return "NATIVE" }
 func (*PactusPACAsset) AssetType() AssetType   { return "coin" }
+func (*PactusPACAsset) BIP44CoinType() int     { return 21888 }
 func (*PactusPACAsset) Description() string    { return `Pactus is an open-source, layer-1 blockchain technology with a revolutionary, secure, Solid State Proof of Stake Consensus.
 ` }
 func (*PactusPACAsset) Website() string        { return "https://pactus.org" }
 func (*PactusPACAsset) Explorer() string       { return "https://pacviewer.com" }
 func (*PactusPACAsset) Decimals() uint         { return 9 }
-func (*PactusPACAsset) Status() string         { return "active" }
+func (*PactusPACAsset) Status() string         { return "" }
 func (*PactusPACAsset) Icon() string           { return rawPactusPACAsset }

@@ -1,4 +1,4 @@
-package golang
+package chains
 
 type (
 	AssetType string

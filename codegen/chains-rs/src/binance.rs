@@ -4,7 +4,7 @@ use crate::types::{AssetType, Link};
 use crate::blockchain::Blockchain;
 use crate::asset::Asset;
 
-/// BNB Beacon Chain Blockchain Implementation
+/// Binance Smart Chain Blockchain Implementation
 pub struct BinanceBlockchain;
 
 const LOGO_SVG: &str = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -266,7 +266,7 @@ const LOGO_SVG: &str = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 impl Blockchain for BinanceBlockchain {
     fn name(&self) -> &str {
-        "BNB Beacon Chain"
+        "Binance Smart Chain"
     }
 
     fn description(&self) -> &str {
@@ -280,14 +280,6 @@ impl Blockchain for BinanceBlockchain {
 
     fn explorer(&self) -> &str {
         "https://explorer.binance.org/"
-    }
-
-    fn symbol(&self) -> &str {
-        "BNB"
-    }
-
-    fn decimals(&self) -> u32 {
-        8
     }
 
     fn links(&self) -> Vec<Link> {
@@ -601,6 +593,10 @@ impl Asset for BinanceBNBAsset {
         "NATIVE"
     }
 
+    fn bip44_coin_type(&self) -> isize {
+        714
+    }
+
     fn description(&self) -> &str {
         "Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 "
@@ -615,11 +611,11 @@ impl Asset for BinanceBNBAsset {
     }
 
     fn decimals(&self) -> u32 {
-        8
+        18
     }
 
     fn status(&self) -> &str {
-        "inactive"
+        ""
     }
 
     fn icon(&self) -> &str {
@@ -817,6 +813,10 @@ impl Asset for BinanceUSDTAsset {
         "BEP20"
     }
 
+    fn bip44_coin_type(&self) -> isize {
+        0
+    }
+
     fn description(&self) -> &str {
         "Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
 "
@@ -835,7 +835,7 @@ impl Asset for BinanceUSDTAsset {
     }
 
     fn status(&self) -> &str {
-        "active"
+        ""
     }
 
     fn icon(&self) -> &str {

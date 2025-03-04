@@ -1,6 +1,6 @@
 // Code generated automatically. DO NOT EDIT.
 
-package golang
+package chains
 
 type BitcoinBlockchain struct{}
 
@@ -140,14 +140,6 @@ func (*BitcoinBlockchain) Website() string {
 
 func (*BitcoinBlockchain) Explorer() string {
 	return "https://blockchain.info"
-}
-
-func (*BitcoinBlockchain) Symbol() string {
-	return "BTC"
-}
-
-func (*BitcoinBlockchain) Decimals() uint {
-	return 8
 }
 
 func (*BitcoinBlockchain) Links() []Link {
@@ -303,10 +295,11 @@ func (*BitcoinBTCAsset) Name() string           { return "Bitcoin" }
 func (*BitcoinBTCAsset) Symbol() string         { return "BTC" }
 func (*BitcoinBTCAsset) Type() string           { return "NATIVE" }
 func (*BitcoinBTCAsset) AssetType() AssetType   { return "coin" }
+func (*BitcoinBTCAsset) BIP44CoinType() int     { return 0 }
 func (*BitcoinBTCAsset) Description() string    { return `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
 ` }
 func (*BitcoinBTCAsset) Website() string        { return "https://bitcoin.org" }
 func (*BitcoinBTCAsset) Explorer() string       { return "https://blockchain.info" }
 func (*BitcoinBTCAsset) Decimals() uint         { return 8 }
-func (*BitcoinBTCAsset) Status() string         { return "active" }
+func (*BitcoinBTCAsset) Status() string         { return "" }
 func (*BitcoinBTCAsset) Icon() string           { return rawBitcoinBTCAsset }

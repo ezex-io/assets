@@ -3,16 +3,14 @@
 import { Blockchain, Asset, Link } from "./blockchain";
 
 /**
- * BNB Beacon Chain Blockchain Implementation
+ * Binance Smart Chain Blockchain Implementation
  */
 export class BinanceBlockchain implements Blockchain {
-    name: string = "BNB Beacon Chain";
+    name: string = "Binance Smart Chain";
     description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 `;
     website: string = "https://binance.org/";
     explorer: string = "https://explorer.binance.org/";
-    symbol: string = "BNB";
-    decimals: number = 8;
     logo: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"256\" height=\"256\">
 <path d=\"M0 0 C0.75941895 0.24137695 1.51883789 0.48275391 2.30126953 0.73144531 C31.68311688 10.15212232 56.35362506 28.94448434 73 55 C74.06154297 56.64548828 74.06154297 56.64548828 75.14453125 58.32421875 C80.85516781 67.72547702 84.6541032 77.55581919 88 88 C88.3410376 89.00232666 88.3410376 89.00232666 88.68896484 90.02490234 C95.50142889 110.66127498 94.9607454 139.50005867 88 160 C87.75862305 160.75941895 87.51724609 161.51883789 87.26855469 162.30126953 C77.84787768 191.68311688 59.05551566 216.35362506 33 233 C31.35451172 234.06154297 31.35451172 234.06154297 29.67578125 235.14453125 C20.27452298 240.85516781 10.44418081 244.6541032 0 248 C-0.66821777 248.2273584 -1.33643555 248.4547168 -2.02490234 248.68896484 C-22.66127498 255.50142889 -51.50005867 254.9607454 -72 248 C-72.75941895 247.75862305 -73.51883789 247.51724609 -74.30126953 247.26855469 C-103.68311688 237.84787768 -128.35362506 219.05551566 -145 193 C-146.06154297 191.35451172 -146.06154297 191.35451172 -147.14453125 189.67578125 C-152.85516781 180.27452298 -156.6541032 170.44418081 -160 160 C-160.3410376 158.99767334 -160.3410376 158.99767334 -160.68896484 157.97509766 C-167.50142889 137.33872502 -166.9607454 108.49994133 -160 88 C-159.75862305 87.24058105 -159.51724609 86.48116211 -159.26855469 85.69873047 C-149.84787768 56.31688312 -131.05551566 31.64637494 -105 15 C-103.90300781 14.29230469 -102.80601563 13.58460937 -101.67578125 12.85546875 C-92.27452298 7.14483219 -82.44418081 3.3458968 -72 0 C-71.33178223 -0.2273584 -70.66356445 -0.4547168 -69.97509766 -0.68896484 C-49.33872502 -7.50142889 -20.49994133 -6.9607454 0 0 Z \" fill=\"#F0B90C\" transform=\"translate(164,4)\"/>
@@ -284,7 +282,7 @@ export class BinanceBlockchain implements Blockchain {
 }
 
 /**
- * BNB Beacon Chain Asset Implementation
+ * Binance Smart Chain Asset Implementation
  */
 export class BinanceBNBAsset implements Asset {
     id: string = "binance_bnb";
@@ -292,12 +290,13 @@ export class BinanceBNBAsset implements Asset {
     symbol: string = "BNB";
     type: string = "NATIVE";
     assetType: string = "coin";
+    bip44CoinType: number = 714;
     description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 `;
     website: string = "https://binance.org";
     explorer: string = "https://explorer.binance.org/";
-    decimals: number = 8;
-    status: string = "inactive";
+    decimals: number = 18;
+    status: string = "";
     icon: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"256\" height=\"256\">
 <path d=\"M0 0 C0.75941895 0.24137695 1.51883789 0.48275391 2.30126953 0.73144531 C31.68311688 10.15212232 56.35362506 28.94448434 73 55 C74.06154297 56.64548828 74.06154297 56.64548828 75.14453125 58.32421875 C80.85516781 67.72547702 84.6541032 77.55581919 88 88 C88.3410376 89.00232666 88.3410376 89.00232666 88.68896484 90.02490234 C95.50142889 110.66127498 94.9607454 139.50005867 88 160 C87.75862305 160.75941895 87.51724609 161.51883789 87.26855469 162.30126953 C77.84787768 191.68311688 59.05551566 216.35362506 33 233 C31.35451172 234.06154297 31.35451172 234.06154297 29.67578125 235.14453125 C20.27452298 240.85516781 10.44418081 244.6541032 0 248 C-0.66821777 248.2273584 -1.33643555 248.4547168 -2.02490234 248.68896484 C-22.66127498 255.50142889 -51.50005867 254.9607454 -72 248 C-72.75941895 247.75862305 -73.51883789 247.51724609 -74.30126953 247.26855469 C-103.68311688 237.84787768 -128.35362506 219.05551566 -145 193 C-146.06154297 191.35451172 -146.06154297 191.35451172 -147.14453125 189.67578125 C-152.85516781 180.27452298 -156.6541032 170.44418081 -160 160 C-160.3410376 158.99767334 -160.3410376 158.99767334 -160.68896484 157.97509766 C-167.50142889 137.33872502 -166.9607454 108.49994133 -160 88 C-159.75862305 87.24058105 -159.51724609 86.48116211 -159.26855469 85.69873047 C-149.84787768 56.31688312 -131.05551566 31.64637494 -105 15 C-103.90300781 14.29230469 -102.80601563 13.58460937 -101.67578125 12.85546875 C-92.27452298 7.14483219 -82.44418081 3.3458968 -72 0 C-71.33178223 -0.2273584 -70.66356445 -0.4547168 -69.97509766 -0.68896484 C-49.33872502 -7.50142889 -20.49994133 -6.9607454 0 0 Z \" fill=\"#F0B90C\" transform=\"translate(164,4)\"/>
@@ -561,12 +560,13 @@ export class BinanceUSDTAsset implements Asset {
     symbol: string = "USDT";
     type: string = "BEP20";
     assetType: string = "token";
+    bip44CoinType: number = 0;
     description: string = `Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
 `;
     website: string = "https://tether.to/";
     explorer: string = "https://explorer.binance.org/asset/USDT-6D8";
     decimals: number = 8;
-    status: string = "active";
+    status: string = "";
     icon: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
 <svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"300px\" height=\"300px\" style=\"shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">

@@ -142,14 +142,6 @@ impl Blockchain for BitcoinBlockchain {
         "https://blockchain.info"
     }
 
-    fn symbol(&self) -> &str {
-        "BTC"
-    }
-
-    fn decimals(&self) -> u32 {
-        8
-    }
-
     fn links(&self) -> Vec<Link> {
         vec![
             Link { name: "github".to_string(), url: "https://github.com/bitcoin".to_string() },
@@ -319,6 +311,10 @@ impl Asset for BitcoinBTCAsset {
         "NATIVE"
     }
 
+    fn bip44_coin_type(&self) -> isize {
+        0
+    }
+
     fn description(&self) -> &str {
         "Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
 "
@@ -337,7 +333,7 @@ impl Asset for BitcoinBTCAsset {
     }
 
     fn status(&self) -> &str {
-        "active"
+        ""
     }
 
     fn icon(&self) -> &str {

@@ -32,14 +32,6 @@ impl Blockchain for PactusBlockchain {
         "https://pacviewer.com/"
     }
 
-    fn symbol(&self) -> &str {
-        "PAC"
-    }
-
-    fn decimals(&self) -> u32 {
-        9
-    }
-
     fn links(&self) -> Vec<Link> {
         vec![
             Link { name: "github".to_string(), url: "https://github.com/pactus-project".to_string() },
@@ -103,6 +95,10 @@ impl Asset for PactusPACAsset {
         "NATIVE"
     }
 
+    fn bip44_coin_type(&self) -> isize {
+        21888
+    }
+
     fn description(&self) -> &str {
         "Pactus is an open-source, layer-1 blockchain technology with a revolutionary, secure, Solid State Proof of Stake Consensus.
 "
@@ -121,7 +117,7 @@ impl Asset for PactusPACAsset {
     }
 
     fn status(&self) -> &str {
-        "active"
+        ""
     }
 
     fn icon(&self) -> &str {

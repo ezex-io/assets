@@ -3,8 +3,6 @@ export interface Blockchain {
     description: string;
     website: string;
     explorer: string;
-    symbol: string;
-    decimals: number;
     logo: string;
     links: Link[];
     assets: Asset[];
@@ -16,6 +14,7 @@ export interface Asset {
     symbol: string;
     type: string;
     assetType: string;
+    bip44CoinType: number;
     description: string;
     website: string;
     explorer: string;

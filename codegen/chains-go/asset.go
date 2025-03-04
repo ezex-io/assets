@@ -1,4 +1,4 @@
-package golang
+package chains
 
 type Asset interface {
 	ID() string
@@ -8,6 +8,7 @@ type Asset interface {
 	Decimals() uint
 	Type() string
 	AssetType() AssetType
+	BIP44CoinType() int
 	Website() string
 	Explorer() string
 	Status() string

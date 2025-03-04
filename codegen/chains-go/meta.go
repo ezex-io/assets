@@ -1,6 +1,6 @@
 // Code generated automatically. DO NOT EDIT.
 
-package golang
+package chains
 
 var Blockchains = map[string]Blockchain{
     "binance": Binance(),
