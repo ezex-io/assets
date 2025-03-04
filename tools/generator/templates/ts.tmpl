@@ -20,7 +20,7 @@ export class {{ StructName }} implements Blockchain {
 
     assets: Asset[] = [
     {% for asset in Assets %}
-        Object.freeze(new {{ asset.StructName }}()),
+        new {{ asset.StructName }}(),
     {% endfor %}
     ];
 }
@@ -30,17 +30,17 @@ export class {{ StructName }} implements Blockchain {
  */
 {% for asset in Assets %}
 export class {{ asset.StructName }} implements Asset {
-    id: string = "{{ asset.ID }}";
-    name: string = "{{ asset.Name }}";
-    address: string = "{{ asset.Address }}";
-    symbol: string = "{{ asset.Symbol }}";
-    type: string = "{{ asset.Type }}";
-    assetType: string = "{{ asset.AssetType }}";
-    bip44CoinType: number = {{ asset.BIP44CoinType }};
-    description: string = `{{ asset.Description }}`;
-    website: string = "{{ asset.Website }}";
-    explorer: string = "{{ asset.Explorer }}";
-    decimals: number = {{ asset.Decimals }};
-    icon: string = `{{ asset.Icon }}`;
+    readonly id: string = "{{ asset.ID }}";
+    readonly name: string = "{{ asset.Name }}";
+    readonly address: string = "{{ asset.Address }}";
+    readonly symbol: string = "{{ asset.Symbol }}";
+    readonly type: string = "{{ asset.Type }}";
+    readonly assetType: string = "{{ asset.AssetType }}";
+    readonly bip44CoinType: number = {{ asset.BIP44CoinType }};
+    readonly description: string = `{{ asset.Description }}`;
+    readonly website: string = "{{ asset.Website }}";
+    readonly explorer: string = "{{ asset.Explorer }}";
+    readonly decimals: number = {{ asset.Decimals }};
+    readonly icon: string = `{{ asset.Icon }}`;
 }
 {% endfor %}

@@ -41,8 +41,8 @@ export class BinanceBlockchain implements Blockchain {
     ];
 
     assets: Asset[] = [
-        Object.freeze(new BinanceBNBAsset()),
-        Object.freeze(new BinanceUSDTAsset()),
+        new BinanceBNBAsset(),
+        new BinanceUSDTAsset(),
     ];
 }
 
@@ -50,19 +50,19 @@ export class BinanceBlockchain implements Blockchain {
  * Binance Smart Chain Asset Implementation
  */
 export class BinanceBNBAsset implements Asset {
-    id: string = "binance_bnb";
-    name: string = "Binance";
-    address: string = "";
-    symbol: string = "BNB";
-    type: string = "NATIVE";
-    assetType: string = "coin";
-    bip44CoinType: number = 714;
-    description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
+    readonly id: string = "binance_bnb";
+    readonly name: string = "Binance";
+    readonly address: string = "";
+    readonly symbol: string = "BNB";
+    readonly type: string = "NATIVE";
+    readonly assetType: string = "coin";
+    readonly bip44CoinType: number = 714;
+    readonly description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 `;
-    website: string = "https://binance.org";
-    explorer: string = "https://explorer.binance.org/";
-    decimals: number = 18;
-    icon: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
+    readonly website: string = "https://binance.org";
+    readonly explorer: string = "https://explorer.binance.org/";
+    readonly decimals: number = 18;
+    readonly icon: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
 	 viewBox=\"0 0 2496 2496\" style=\"enable-background:new 0 0 2496 2496;\" xml:space=\"preserve\">
@@ -85,17 +85,17 @@ export class BinanceBNBAsset implements Asset {
 `;
 }
 export class BinanceUSDTAsset implements Asset {
-    id: string = "binance_usdt";
-    name: string = "Tether USD";
-    address: string = "0x55d398326f99059fF775485246999027B3197955";
-    symbol: string = "USDT";
-    type: string = "BEP20";
-    assetType: string = "token";
-    bip44CoinType: number = -1;
-    description: string = `Tether gives you the joint benefits of open blockchain technology and traditional currency by converting your cash into a stable digital currency equivalent.
+    readonly id: string = "binance_usdt";
+    readonly name: string = "Tether USD";
+    readonly address: string = "0x55d398326f99059fF775485246999027B3197955";
+    readonly symbol: string = "USDT";
+    readonly type: string = "BEP20";
+    readonly assetType: string = "token";
+    readonly bip44CoinType: number = -1;
+    readonly description: string = `Tether gives you the joint benefits of open blockchain technology and traditional currency by converting your cash into a stable digital currency equivalent.
 `;
-    website: string = "https://tether.to";
-    explorer: string = "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955";
-    decimals: number = 18;
-    icon: string = `<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 339.43 295.27\"><title>tether-usdt-logo</title><path d=\"M62.15,1.45l-61.89,130a2.52,2.52,0,0,0,.54,2.94L167.95,294.56a2.55,2.55,0,0,0,3.53,0L338.63,134.4a2.52,2.52,0,0,0,.54-2.94l-61.89-130A2.5,2.5,0,0,0,275,0H64.45a2.5,2.5,0,0,0-2.3,1.45h0Z\" style=\"fill:#50af95;fill-rule:evenodd\"/><path d=\"M191.19,144.8v0c-1.2.09-7.4,0.46-21.23,0.46-11,0-18.81-.33-21.55-0.46v0c-42.51-1.87-74.24-9.27-74.24-18.13s31.73-16.25,74.24-18.15v28.91c2.78,0.2,10.74.67,21.74,0.67,13.2,0,19.81-.55,21-0.66v-28.9c42.42,1.89,74.08,9.29,74.08,18.13s-31.65,16.24-74.08,18.12h0Zm0-39.25V79.68h59.2V40.23H89.21V79.68H148.4v25.86c-48.11,2.21-84.29,11.74-84.29,23.16s36.18,20.94,84.29,23.16v82.9h42.78V151.83c48-2.21,84.12-11.73,84.12-23.14s-36.09-20.93-84.12-23.15h0Zm0,0h0Z\" style=\"fill:#fff;fill-rule:evenodd\"/></svg>`;
+    readonly website: string = "https://tether.to";
+    readonly explorer: string = "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955";
+    readonly decimals: number = 18;
+    readonly icon: string = `<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 339.43 295.27\"><title>tether-usdt-logo</title><path d=\"M62.15,1.45l-61.89,130a2.52,2.52,0,0,0,.54,2.94L167.95,294.56a2.55,2.55,0,0,0,3.53,0L338.63,134.4a2.52,2.52,0,0,0,.54-2.94l-61.89-130A2.5,2.5,0,0,0,275,0H64.45a2.5,2.5,0,0,0-2.3,1.45h0Z\" style=\"fill:#50af95;fill-rule:evenodd\"/><path d=\"M191.19,144.8v0c-1.2.09-7.4,0.46-21.23,0.46-11,0-18.81-.33-21.55-0.46v0c-42.51-1.87-74.24-9.27-74.24-18.13s31.73-16.25,74.24-18.15v28.91c2.78,0.2,10.74.67,21.74,0.67,13.2,0,19.81-.55,21-0.66v-28.9c42.42,1.89,74.08,9.29,74.08,18.13s-31.65,16.24-74.08,18.12h0Zm0-39.25V79.68h59.2V40.23H89.21V79.68H148.4v25.86c-48.11,2.21-84.29,11.74-84.29,23.16s36.18,20.94,84.29,23.16v82.9h42.78V151.83c48-2.21,84.12-11.73,84.12-23.14s-36.09-20.93-84.12-23.15h0Zm0,0h0Z\" style=\"fill:#fff;fill-rule:evenodd\"/></svg>`;
 }

@@ -9,18 +9,18 @@ export interface Blockchain {
 }
 
 export interface Asset {
-    id: string;
-    name: string;
-    address: string;
-    symbol: string;
-    type: string;
-    assetType: string;
-    bip44CoinType: number;
-    description: string;
-    website: string;
-    explorer: string;
-    decimals: number;
-    icon: string;
+    readonly id: string;
+    readonly name: string;
+    readonly address: string;
+    readonly symbol: string;
+    readonly type: string;
+    readonly assetType: string;
+    readonly bip44CoinType: number;
+    readonly description: string;
+    readonly website: string;
+    readonly explorer: string;
+    readonly decimals: number;
+    readonly icon: string;
 }
 
 export interface Link {
