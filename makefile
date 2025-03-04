@@ -1,2 +1,2 @@
 gen:
-	python3 generator/generator.py
+	python3 tools/generator/generator.py
