@@ -6,9 +6,6 @@ description: >
   or single administrator.
 explorer: https://blockchain.info
 research: https://research.binance.com/en/projects/bitcoin
-symbol: BTC
-asset_type: coin
-decimals: 8
 links:
   - name: github
     url: https://github.com/bitcoin

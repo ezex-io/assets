@@ -4,9 +4,6 @@ description: >
   Pactus is an open-source, layer-1 blockchain technology with a revolutionary,
   secure, Solid State Proof of Stake Consensus.
 explorer: https://pacviewer.com/
-symbol: PAC
-asset_type: coin
-decimals: 9
 links:
   - name: github
     url: https://github.com/pactus-project
