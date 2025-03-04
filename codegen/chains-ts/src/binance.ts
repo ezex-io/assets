@@ -560,7 +560,7 @@ export class BinanceUSDTAsset implements Asset {
     symbol: string = "USDT";
     type: string = "BEP20";
     assetType: string = "token";
-    bip44CoinType: number = 0;
+    bip44CoinType: number = -1;
     description: string = `Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
 `;
     website: string = "https://tether.to/";

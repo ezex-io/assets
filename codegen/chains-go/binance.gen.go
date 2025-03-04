@@ -760,7 +760,7 @@ func (*BinanceUSDTAsset) Name() string           { return "Binance Tether" }
 func (*BinanceUSDTAsset) Symbol() string         { return "USDT" }
 func (*BinanceUSDTAsset) Type() string           { return "BEP20" }
 func (*BinanceUSDTAsset) AssetType() AssetType   { return "token" }
-func (*BinanceUSDTAsset) BIP44CoinType() int     { return 0 }
+func (*BinanceUSDTAsset) BIP44CoinType() int     { return -1 }
 func (*BinanceUSDTAsset) Description() string    { return `Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
 ` }
 func (*BinanceUSDTAsset) Website() string        { return "https://tether.to/" }

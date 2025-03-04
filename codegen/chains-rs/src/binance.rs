@@ -814,7 +814,7 @@ impl Asset for BinanceUSDTAsset {
     }
 
     fn bip44_coin_type(&self) -> isize {
-        0
+        -1
     }
 
     fn description(&self) -> &str {

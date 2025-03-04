@@ -164,7 +164,7 @@ def process_chain(chain_path, language):
                 "Symbol": asset_info.get("symbol", ""),
                 "Type": asset_info.get("type", ""),
                 "AssetType": asset_info.get("asset_type", ""),
-                "BIP44CoinType": asset_info.get("bip44_coin_type", 0),
+                "BIP44CoinType": asset_info.get("bip44_coin_type", -1),
                 "Description": asset_info.get("description", ""),
                 "Website": asset_info.get("website", ""),
                 "Explorer": asset_info.get("explorer", ""),
