@@ -6,12 +6,12 @@ import { Blockchain, Asset, Link } from "./blockchain";
  * Binance Smart Chain Blockchain Implementation
  */
 export class BinanceBlockchain implements Blockchain {
-    name: string = "Binance Smart Chain";
-    description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
+    readonly name: string = "Binance Smart Chain";
+    readonly description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
 `;
-    website: string = "https://binance.org/";
-    explorer: string = "https://explorer.binance.org/";
-    logo: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
+    readonly website: string = "https://binance.org/";
+    readonly explorer: string = "https://explorer.binance.org/";
+    readonly logo: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
 	 viewBox=\"0 0 2496 2496\" style=\"enable-background:new 0 0 2496 2496;\" xml:space=\"preserve\">
@@ -41,8 +41,8 @@ export class BinanceBlockchain implements Blockchain {
     ];
 
     assets: Asset[] = [
-        new BinanceBNBAsset(),
-        new BinanceUSDTAsset(),
+        Object.freeze(new BinanceBNBAsset()),
+        Object.freeze(new BinanceUSDTAsset()),
     ];
 }
 

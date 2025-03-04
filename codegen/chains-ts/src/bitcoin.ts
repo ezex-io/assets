@@ -6,12 +6,12 @@ import { Blockchain, Asset, Link } from "./blockchain";
  * Bitcoin Blockchain Implementation
  */
 export class BitcoinBlockchain implements Blockchain {
-    name: string = "Bitcoin";
-    description: string = `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
+    readonly name: string = "Bitcoin";
+    readonly description: string = `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
 `;
-    website: string = "https://bitcoin.org";
-    explorer: string = "https://blockchain.info";
-    logo: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    readonly website: string = "https://bitcoin.org";
+    readonly explorer: string = "https://blockchain.info";
+    readonly logo: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
 <!-- Creator: CorelDRAW 2019 (64-Bit) -->
 <svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"100%\" height=\"100%\" version=\"1.1\" shape-rendering=\"geometricPrecision\" text-rendering=\"geometricPrecision\" image-rendering=\"optimizeQuality\" fill-rule=\"evenodd\" clip-rule=\"evenodd\"
@@ -36,7 +36,7 @@ viewBox=\"0 0 4091.27 4091.73\"
     ];
 
     assets: Asset[] = [
-        new BitcoinBTCAsset(),
+        Object.freeze(new BitcoinBTCAsset()),
     ];
 }
 

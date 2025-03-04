@@ -1,9 +1,9 @@
 export interface Blockchain {
-    name: string;
-    description: string;
-    website: string;
-    explorer: string;
-    logo: string;
+    readonly name: string;
+    readonly description: string;
+    readonly website: string;
+    readonly explorer: string;
+    readonly logo: string;
     links: Link[];
     assets: Asset[];
 }

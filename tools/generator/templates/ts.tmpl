@@ -6,11 +6,11 @@ import { Blockchain, Asset, Link } from "./blockchain";
  * {{ Name }} Blockchain Implementation
  */
 export class {{ StructName }} implements Blockchain {
-    name: string = "{{ Name }}";
-    description: string = `{{ Description }}`;
-    website: string = "{{ Website }}";
-    explorer: string = "{{ Explorer }}";
-    logo: string = `{{ Logo }}`;
+    readonly name: string = "{{ Name }}";
+    readonly description: string = `{{ Description }}`;
+    readonly website: string = "{{ Website }}";
+    readonly explorer: string = "{{ Explorer }}";
+    readonly logo: string = `{{ Logo }}`;
 
     links: Link[] = [
     {% for link in Links %}
@@ -20,7 +20,7 @@ export class {{ StructName }} implements Blockchain {
 
     assets: Asset[] = [
     {% for asset in Assets %}
-        new {{ asset.StructName }}(),
+        Object.freeze(new {{ asset.StructName }}()),
     {% endfor %}
     ];
 }
