@@ -580,6 +580,10 @@ impl Asset for BinanceBNBAsset {
         "Binance"
     }
 
+    fn address(&self) -> &str {
+        ""
+    }
+
     fn symbol(&self) -> &str {
         "BNB"
     }
@@ -793,6 +797,10 @@ impl Asset for BinanceUSDTAsset {
 
     fn name(&self) -> &str {
         "Tether USD"
+    }
+
+    fn address(&self) -> &str {
+        "0x55d398326f99059fF775485246999027B3197955"
     }
 
     fn symbol(&self) -> &str {

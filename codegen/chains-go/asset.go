@@ -3,6 +3,8 @@ package chains
 type Asset interface {
 	ID() string
 	Name() string
+	// Address is for token
+	Address() string
 	Description() string
 	Symbol() string
 	Decimals() uint

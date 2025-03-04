@@ -161,6 +161,7 @@ def process_chain(chain_path, language):
                 "StructName": f"{chain_name.capitalize()}{asset_info.get('symbol', '').upper()}Asset",
                 "ID": asset_info.get("id", ""),
                 "Name": asset_info.get("name", ""),
+                "Address": asset_info.get("address", ""),
                 "Symbol": asset_info.get("symbol", ""),
                 "Type": asset_info.get("type", ""),
                 "AssetType": asset_info.get("asset_type", ""),

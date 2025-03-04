@@ -64,6 +64,7 @@ const raw{{ asset.StructName }} = `{{ asset.Icon }}`
 
 func (*{{ asset.StructName }}) ID() string             { return "{{ asset.ID }}" }
 func (*{{ asset.StructName }}) Name() string           { return "{{ asset.Name }}" }
+func (*{{ asset.StructName }}) Address() string        { return "{{ asset.Address }}" }
 func (*{{ asset.StructName }}) Symbol() string         { return "{{ asset.Symbol }}" }
 func (*{{ asset.StructName }}) Type() string           { return "{{ asset.Type }}" }
 func (*{{ asset.StructName }}) AssetType() AssetType   { return "{{ asset.AssetType }}" }

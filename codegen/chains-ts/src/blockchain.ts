@@ -11,6 +11,7 @@ export interface Blockchain {
 export interface Asset {
     id: string;
     name: string;
+    address: string;
     symbol: string;
     type: string;
     assetType: string;

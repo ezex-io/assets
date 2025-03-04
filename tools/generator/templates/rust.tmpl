@@ -71,6 +71,10 @@ impl Asset for {{ asset.StructName }} {
         "{{ asset.Name }}"
     }
 
+    fn address(&self) -> &str {
+        "{{ asset.Address }}"
+    }
+
     fn symbol(&self) -> &str {
         "{{ asset.Symbol }}"
     }

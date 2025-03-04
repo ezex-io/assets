@@ -40,6 +40,7 @@ export class PactusBlockchain implements Blockchain {
 export class PactusPACAsset implements Asset {
     id: string = "pactus_pac";
     name: string = "Pactus";
+    address: string = "";
     symbol: string = "PAC";
     type: string = "NATIVE";
     assetType: string = "coin";

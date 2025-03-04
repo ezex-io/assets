@@ -287,6 +287,7 @@ export class BinanceBlockchain implements Blockchain {
 export class BinanceBNBAsset implements Asset {
     id: string = "binance_bnb";
     name: string = "Binance";
+    address: string = "";
     symbol: string = "BNB";
     type: string = "NATIVE";
     assetType: string = "coin";
@@ -556,6 +557,7 @@ export class BinanceBNBAsset implements Asset {
 export class BinanceUSDTAsset implements Asset {
     id: string = "binance_usdt";
     name: string = "Tether USD";
+    address: string = "0x55d398326f99059fF775485246999027B3197955";
     symbol: string = "USDT";
     type: string = "BEP20";
     assetType: string = "token";

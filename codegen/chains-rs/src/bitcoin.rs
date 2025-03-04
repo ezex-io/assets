@@ -298,6 +298,10 @@ impl Asset for BitcoinBTCAsset {
         "Bitcoin"
     }
 
+    fn address(&self) -> &str {
+        ""
+    }
+
     fn symbol(&self) -> &str {
         "BTC"
     }

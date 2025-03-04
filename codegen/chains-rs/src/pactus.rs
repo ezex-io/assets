@@ -82,6 +82,10 @@ impl Asset for PactusPACAsset {
         "Pactus"
     }
 
+    fn address(&self) -> &str {
+        ""
+    }
+
     fn symbol(&self) -> &str {
         "PAC"
     }

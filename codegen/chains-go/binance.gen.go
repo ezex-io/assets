@@ -574,6 +574,7 @@ const rawBinanceBNBAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 func (*BinanceBNBAsset) ID() string             { return "binance_bnb" }
 func (*BinanceBNBAsset) Name() string           { return "Binance" }
+func (*BinanceBNBAsset) Address() string        { return "" }
 func (*BinanceBNBAsset) Symbol() string         { return "BNB" }
 func (*BinanceBNBAsset) Type() string           { return "NATIVE" }
 func (*BinanceBNBAsset) AssetType() AssetType   { return "coin" }
@@ -754,6 +755,7 @@ const rawBinanceUSDTAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 func (*BinanceUSDTAsset) ID() string             { return "binance_usdt" }
 func (*BinanceUSDTAsset) Name() string           { return "Tether USD" }
+func (*BinanceUSDTAsset) Address() string        { return "0x55d398326f99059fF775485246999027B3197955" }
 func (*BinanceUSDTAsset) Symbol() string         { return "USDT" }
 func (*BinanceUSDTAsset) Type() string           { return "BEP20" }
 func (*BinanceUSDTAsset) AssetType() AssetType   { return "token" }

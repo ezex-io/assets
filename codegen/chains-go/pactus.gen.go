@@ -75,6 +75,7 @@ const rawPactusPACAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 func (*PactusPACAsset) ID() string             { return "pactus_pac" }
 func (*PactusPACAsset) Name() string           { return "Pactus" }
+func (*PactusPACAsset) Address() string        { return "" }
 func (*PactusPACAsset) Symbol() string         { return "PAC" }
 func (*PactusPACAsset) Type() string           { return "NATIVE" }
 func (*PactusPACAsset) AssetType() AssetType   { return "coin" }

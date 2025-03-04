@@ -291,6 +291,7 @@ const rawBitcoinBTCAsset = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 
 func (*BitcoinBTCAsset) ID() string             { return "bitcoin_btc" }
 func (*BitcoinBTCAsset) Name() string           { return "Bitcoin" }
+func (*BitcoinBTCAsset) Address() string        { return "" }
 func (*BitcoinBTCAsset) Symbol() string         { return "BTC" }
 func (*BitcoinBTCAsset) Type() string           { return "NATIVE" }
 func (*BitcoinBTCAsset) AssetType() AssetType   { return "coin" }

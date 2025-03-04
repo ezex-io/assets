@@ -146,6 +146,7 @@ export class BitcoinBlockchain implements Blockchain {
 export class BitcoinBTCAsset implements Asset {
     id: string = "bitcoin_btc";
     name: string = "Bitcoin";
+    address: string = "";
     symbol: string = "BTC";
     type: string = "NATIVE";
     assetType: string = "coin";
