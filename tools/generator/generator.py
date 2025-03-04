@@ -169,7 +169,6 @@ def process_chain(chain_path, language):
                 "Website": asset_info.get("website", ""),
                 "Explorer": asset_info.get("explorer", ""),
                 "Decimals": asset_info.get("decimals", 0),
-                "Status": asset_info.get("status", ""),
                 "Icon": asset_icon
             })
 

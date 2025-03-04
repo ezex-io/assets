@@ -116,10 +116,6 @@ impl Asset for PactusPACAsset {
         9
     }
 
-    fn status(&self) -> &str {
-        ""
-    }
-
     fn icon(&self) -> &str {
             ICON_PACTUSPACASSET
     }

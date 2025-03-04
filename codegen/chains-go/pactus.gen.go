@@ -85,5 +85,4 @@ func (*PactusPACAsset) Description() string    { return `Pactus is an open-sourc
 func (*PactusPACAsset) Website() string        { return "https://pactus.org" }
 func (*PactusPACAsset) Explorer() string       { return "https://pacviewer.com" }
 func (*PactusPACAsset) Decimals() uint         { return 9 }
-func (*PactusPACAsset) Status() string         { return "" }
 func (*PactusPACAsset) Icon() string           { return rawPactusPACAsset }

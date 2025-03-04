@@ -614,16 +614,12 @@ impl Asset for BinanceBNBAsset {
         18
     }
 
-    fn status(&self) -> &str {
-        ""
-    }
-
     fn icon(&self) -> &str {
             ICON_BINANCEBNBASSET
     }
 }
 
-/// Binance Tether Asset Implementation
+/// Tether USD Asset Implementation
 pub struct BinanceUSDTAsset;
 
 const ICON_BINANCEUSDTASSET: &str = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -798,7 +794,7 @@ impl Asset for BinanceUSDTAsset {
     }
 
     fn name(&self) -> &str {
-        "Binance Tether"
+        "Tether USD"
     }
 
     fn symbol(&self) -> &str {
@@ -818,24 +814,20 @@ impl Asset for BinanceUSDTAsset {
     }
 
     fn description(&self) -> &str {
-        "Tether (USDT) is a cryptocurrency with a value meant to mirror the value of the U.S. dollar.
+        "Tether gives you the joint benefits of open blockchain technology and traditional currency by converting your cash into a stable digital currency equivalent.
 "
     }
 
     fn website(&self) -> &str {
-        "https://tether.to/"
+        "https://tether.to"
     }
 
     fn explorer(&self) -> &str {
-        "https://explorer.binance.org/asset/USDT-6D8"
+        "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955"
     }
 
     fn decimals(&self) -> u32 {
-        8
-    }
-
-    fn status(&self) -> &str {
-        ""
+        18
     }
 
     fn icon(&self) -> &str {

@@ -11,6 +11,5 @@ pub trait Asset {
     fn bip44_coin_type(&self) -> isize;
     fn website(&self) -> &str;
     fn explorer(&self) -> &str;
-    fn status(&self) -> &str;
     fn icon(&self) -> &str;
 }

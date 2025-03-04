@@ -104,10 +104,6 @@ impl Asset for {{ asset.StructName }} {
         {{ asset.Decimals }}
     }
 
-    fn status(&self) -> &str {
-        "{{ asset.Status }}"
-    }
-
     fn icon(&self) -> &str {
             ICON_{{ asset.StructName|upper }}
     }

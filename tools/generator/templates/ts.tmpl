@@ -40,7 +40,6 @@ export class {{ asset.StructName }} implements Asset {
     website: string = "{{ asset.Website }}";
     explorer: string = "{{ asset.Explorer }}";
     decimals: number = {{ asset.Decimals }};
-    status: string = "{{ asset.Status }}";
     icon: string = `{{ asset.Icon }}`;
 }
 {% endfor %}

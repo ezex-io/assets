@@ -73,6 +73,5 @@ func (*{{ asset.StructName }}) Description() string    { return `{{ asset.Descri
 func (*{{ asset.StructName }}) Website() string        { return "{{ asset.Website }}" }
 func (*{{ asset.StructName }}) Explorer() string       { return "{{ asset.Explorer }}" }
 func (*{{ asset.StructName }}) Decimals() uint         { return {{ asset.Decimals }} }
-func (*{{ asset.StructName }}) Status() string         { return "{{ asset.Status }}" }
 func (*{{ asset.StructName }}) Icon() string           { return raw{{ asset.StructName }} }
 {% endfor %}

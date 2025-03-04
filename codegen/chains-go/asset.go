@@ -11,7 +11,6 @@ type Asset interface {
 	BIP44CoinType() int
 	Website() string
 	Explorer() string
-	Status() string
 	// Icon return raw svg as string
 	Icon() string
 }

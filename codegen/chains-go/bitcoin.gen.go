@@ -301,5 +301,4 @@ func (*BitcoinBTCAsset) Description() string    { return `Bitcoin is a cryptocur
 func (*BitcoinBTCAsset) Website() string        { return "https://bitcoin.org" }
 func (*BitcoinBTCAsset) Explorer() string       { return "https://blockchain.info" }
 func (*BitcoinBTCAsset) Decimals() uint         { return 8 }
-func (*BitcoinBTCAsset) Status() string         { return "" }
 func (*BitcoinBTCAsset) Icon() string           { return rawBitcoinBTCAsset }

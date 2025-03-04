@@ -332,10 +332,6 @@ impl Asset for BitcoinBTCAsset {
         8
     }
 
-    fn status(&self) -> &str {
-        ""
-    }
-
     fn icon(&self) -> &str {
             ICON_BITCOINBTCASSET
     }

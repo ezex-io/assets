@@ -19,7 +19,6 @@ export interface Asset {
     website: string;
     explorer: string;
     decimals: number;
-    status: string;
     icon: string;
 }
 
