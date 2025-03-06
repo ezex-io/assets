@@ -2,7 +2,12 @@ extends: default
 
 rules:
   document-start: disable
+  line-length:
+    max: 120
+    level: error
 
 ignore: |
-  template/
+  docs/
   .github/
+  codegen/
+  tools/

@@ -3,3 +3,10 @@
 .vscode
 .idea
 
+# rust
+target/
+
+# typescript
+node_modules/
+package-lock.json
+dist/

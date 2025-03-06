@@ -1,0 +1,16 @@
+[package]
+name = "chains-rs"
+version = "0.1.0"
+edition = "2024"
+authors = ["ezex development team <info@ezex.io>"]
+description = "Blockchain and asset definitions in Rust"
+license = "MIT"
+repository = "https://github.com/ezex-io/chains"
+documentation = "https://docs.rs/chains-rs"
+keywords = ["blockchain", "crypto", "assets", "web3", "cryptocurrency"]
+categories = ["cryptography::cryptocurrencies"]
+
+[dependencies]
+
+[package.metadata.docs.rs]
+rustdoc-args = ["--cfg", "docsrs"]

@@ -1,0 +1,46 @@
+// Code generated automatically. DO NOT EDIT.
+
+import { Blockchain, Asset, Link } from "./blockchain";
+
+/**
+ * {{ Name }} Blockchain Implementation
+ */
+export class {{ StructName }} implements Blockchain {
+    readonly name: string = "{{ Name }}";
+    readonly description: string = `{{ Description }}`;
+    readonly website: string = "{{ Website }}";
+    readonly explorer: string = "{{ Explorer }}";
+    readonly logo: string = `{{ Logo }}`;
+
+    links: Link[] = [
+    {% for link in Links %}
+        { name: "{{ link.name }}", url: "{{ link.url }}" },
+    {% endfor %}
+    ];
+
+    assets: Asset[] = [
+    {% for asset in Assets %}
+        new {{ asset.StructName }}(),
+    {% endfor %}
+    ];
+}
+
+/**
+ * {{ Name }} Asset Implementation
+ */
+{% for asset in Assets %}
+export class {{ asset.StructName }} implements Asset {
+    readonly id: string = "{{ asset.ID }}";
+    readonly name: string = "{{ asset.Name }}";
+    readonly address: string = "{{ asset.Address }}";
+    readonly symbol: string = "{{ asset.Symbol }}";
+    readonly type: string = "{{ asset.Type }}";
+    readonly assetType: string = "{{ asset.AssetType }}";
+    readonly bip44CoinType: number = {{ asset.BIP44CoinType }};
+    readonly description: string = `{{ asset.Description }}`;
+    readonly website: string = "{{ asset.Website }}";
+    readonly explorer: string = "{{ asset.Explorer }}";
+    readonly decimals: number = {{ asset.Decimals }};
+    readonly icon: string = `{{ asset.Icon }}`;
+}
+{% endfor %}

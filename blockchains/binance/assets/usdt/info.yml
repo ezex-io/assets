@@ -1,0 +1,12 @@
+id: binance_usdt
+name: Tether USD
+symbol: USDT
+asset_type: token
+type: BEP20
+description: >
+  Tether gives you the joint benefits of open blockchain technology and traditional currency by converting
+  your cash into a stable digital currency equivalent.
+website: https://tether.to
+explorer: https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955
+decimals: 18
+address: "0x55d398326f99059fF775485246999027B3197955"

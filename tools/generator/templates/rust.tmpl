@@ -1,0 +1,114 @@
+// Code generated automatically. DO NOT EDIT.
+
+use crate::types::{AssetType, Link};
+use crate::blockchain::Blockchain;
+use crate::asset::Asset;
+
+/// {{ Name }} Blockchain Implementation
+pub struct {{ StructName }};
+
+const LOGO_SVG: &str = "{{ Logo }}";
+
+impl Blockchain for {{ StructName }} {
+    fn name(&self) -> &str {
+        "{{ Name }}"
+    }
+
+    fn description(&self) -> &str {
+        "{{ Description }}"
+    }
+
+    fn website(&self) -> &str {
+        "{{ Website }}"
+    }
+
+    fn explorer(&self) -> &str {
+        "{{ Explorer }}"
+    }
+
+    fn links(&self) -> Vec<Link> {
+        vec![
+            {% for link in Links %}
+            Link { name: "{{ link.name }}".to_string(), url: "{{ link.url }}".to_string() },
+            {% endfor %}
+        ]
+    }
+
+    fn assets(&self) -> Vec<Box<dyn Asset>> {
+        vec![
+            {% for asset in Assets %}
+            Box::new({{ asset.StructName }}),
+            {% endfor %}
+        ]
+    }
+
+    fn asset(&self, id: &str) -> Option<Box<dyn Asset>> {
+        match id {
+            {% for asset in Assets %}
+            "{{ asset.ID }}" => Some(Box::new({{ asset.StructName }})),
+            {% endfor %}
+            _ => None,
+        }
+    }
+
+    fn logo(&self) -> &str {
+            LOGO_SVG
+    }
+}
+
+{% for asset in Assets %}
+/// {{ asset.Name }} Asset Implementation
+pub struct {{ asset.StructName }};
+
+const ICON_{{ asset.StructName|upper }}: &str = "{{ asset.Icon }}";
+
+impl Asset for {{ asset.StructName }} {
+    fn id(&self) -> &str {
+        "{{ asset.ID }}"
+    }
+
+    fn name(&self) -> &str {
+        "{{ asset.Name }}"
+    }
+
+    fn address(&self) -> &str {
+        "{{ asset.Address }}"
+    }
+
+    fn symbol(&self) -> &str {
+        "{{ asset.Symbol }}"
+    }
+
+    fn asset_type(&self) -> AssetType {
+        "{{ asset.AssetType }}"
+    }
+
+    fn asset_kind(&self) -> &str {
+        "{{ asset.Type }}"
+    }
+
+    fn bip44_coin_type(&self) -> isize {
+        {{ asset.BIP44CoinType }}
+    }
+
+    fn description(&self) -> &str {
+        "{{ asset.Description }}"
+    }
+
+    fn website(&self) -> &str {
+        "{{ asset.Website }}"
+    }
+
+    fn explorer(&self) -> &str {
+        "{{ asset.Explorer }}"
+    }
+
+    fn decimals(&self) -> u32 {
+        {{ asset.Decimals }}
+    }
+
+    fn icon(&self) -> &str {
+            ICON_{{ asset.StructName|upper }}
+    }
+}
+{% endfor %}
