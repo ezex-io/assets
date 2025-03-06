@@ -3,15 +3,22 @@
 import { Blockchain, Asset, Link } from "./blockchain";
 
 /**
- * Bitcoin Blockchain Implementation
+ * Bitcoin Assets Implementation
  */
-export class BitcoinBlockchain implements Blockchain {
-    readonly name: string = "Bitcoin";
-    readonly description: string = `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
-`;
-    readonly website: string = "https://bitcoin.org";
-    readonly explorer: string = "https://blockchain.info";
-    readonly logo: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+export const BitcoinBTCAsset = new Asset({
+    id: "bitcoin_btc",
+    name: "Bitcoin",
+    address: "",
+    symbol: "BTC",
+    type: "NATIVE",
+    assetType: "coin",
+    bip44CoinType: 0,
+    website: "https://bitcoin.org",
+    explorer: "https://blockchain.info",
+    decimals: 8,
+    description: `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
+`,
+    icon: `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
 <!-- Creator: CorelDRAW 2019 (64-Bit) -->
 <svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"100%\" height=\"100%\" version=\"1.1\" shape-rendering=\"geometricPrecision\" text-rendering=\"geometricPrecision\" image-rendering=\"optimizeQuality\" fill-rule=\"evenodd\" clip-rule=\"evenodd\"
@@ -26,37 +33,28 @@ viewBox=\"0 0 4091.27 4091.73\"
   </g>
  </g>
 </svg>
-`;
-
-    links: Link[] = [
-        { name: "github", url: "https://github.com/bitcoin" },
-        { name: "twitter", url: "https://twitter.com/Bitcoin" },
-        { name: "reddit", url: "https://reddit.com/r/Bitcoin" },
-        { name: "whitepaper", url: "https://bitcoin.org/bitcoin.pdf" },
-    ];
-
-    assets: Asset[] = [
-        new BitcoinBTCAsset(),
-    ];
-}
+`
+});
 
 /**
- * Bitcoin Asset Implementation
+ * Bitcoin Blockchain Implementation
  */
-export class BitcoinBTCAsset implements Asset {
-    readonly id: string = "bitcoin_btc";
-    readonly name: string = "Bitcoin";
-    readonly address: string = "";
-    readonly symbol: string = "BTC";
-    readonly type: string = "NATIVE";
-    readonly assetType: string = "coin";
-    readonly bip44CoinType: number = 0;
-    readonly description: string = `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
-`;
-    readonly website: string = "https://bitcoin.org";
-    readonly explorer: string = "https://blockchain.info";
-    readonly decimals: number = 8;
-    readonly icon: string = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+export const BitcoinBlockchain = new Blockchain({
+    name: "Bitcoin",
+    website: "https://bitcoin.org",
+    explorer: "https://blockchain.info",
+    links: [
+        new Link({ name: "github", url: "https://github.com/bitcoin" }),
+        new Link({ name: "twitter", url: "https://twitter.com/Bitcoin" }),
+        new Link({ name: "reddit", url: "https://reddit.com/r/Bitcoin" }),
+        new Link({ name: "whitepaper", url: "https://bitcoin.org/bitcoin.pdf" }),
+    ],
+    assets: [
+        BitcoinBTCAsset,
+    ],
+    description: `Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator.
+`,
+    logo: `<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">
 <!-- Creator: CorelDRAW 2019 (64-Bit) -->
 <svg xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\" width=\"100%\" height=\"100%\" version=\"1.1\" shape-rendering=\"geometricPrecision\" text-rendering=\"geometricPrecision\" image-rendering=\"optimizeQuality\" fill-rule=\"evenodd\" clip-rule=\"evenodd\"
@@ -71,5 +69,5 @@ viewBox=\"0 0 4091.27 4091.73\"
   </g>
  </g>
 </svg>
-`;
-}
+`,
+})
