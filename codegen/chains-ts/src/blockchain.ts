@@ -29,13 +29,13 @@ interface LinkData {
 }
 
 export class Blockchain {
-    readonly name: string;
-    readonly description: string;
-    readonly website: string;
-    readonly explorer: string;
-    readonly logo: string;
-    readonly links: Link[];
-    readonly assets: Asset[];
+    private readonly name: string;
+    private readonly description: string;
+    private readonly website: string;
+    private readonly explorer: string;
+    private readonly logo: string;
+    private readonly links: Link[];
+    private readonly assets: Asset[];
 
     constructor(data: BlockchainData) {
         this.name = data.name;
@@ -46,21 +46,49 @@ export class Blockchain {
         this.links = data.links;
         this.assets = data.assets;
     }
+
+    getName() {
+        return this.name;
+    }
+
+    getDescription() {
+        return this.description;
+    }
+
+    getWebsite() {
+        return this.website;
+    }
+
+    getExplorer() {
+        return this.explorer;
+    }
+
+    getLogo() {
+        return this.logo;
+    }
+
+    getLinks() {
+        return this.links;
+    }
+
+    getAssets() {
+        return this.assets;
+    }
 }
 
 export class Asset {
-    readonly id: string;
-    readonly name: string;
-    readonly address: string;
-    readonly symbol: string;
-    readonly type: string;
-    readonly assetType: string;
-    readonly bip44CoinType: number;
-    readonly description: string;
-    readonly website: string;
-    readonly explorer: string;
-    readonly decimals: number;
-    readonly icon: string;
+    private readonly id: string;
+    private readonly name: string;
+    private readonly address: string;
+    private readonly symbol: string;
+    private readonly type: string;
+    private readonly assetType: string;
+    private readonly bip44CoinType: number;
+    private readonly description: string;
+    private readonly website: string;
+    private readonly explorer: string;
+    private readonly decimals: number;
+    private readonly icon: string;
 
     constructor(data: AssetData) {
         this.id = data.id;
@@ -76,14 +104,70 @@ export class Asset {
         this.decimals = data.decimals;
         this.icon = data.icon;
     }
+
+    getId() {
+        return this.id;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getAddress() {
+        return this.address;
+    }
+
+    getSymbol() {
+        return this.symbol;
+    }
+
+    getType() {
+        return this.type;
+    }
+
+    getAssetType() {
+        return this.assetType;
+    }
+
+    getBip44CoinType() {
+        return this.bip44CoinType;
+    }
+
+    getDescription() {
+        return this.description;
+    }
+
+    getWebsite() {
+        return this.website;
+    }
+
+    getExplorer() {
+        return this.explorer;
+    }
+
+    getDecimals() {
+        return this.decimals;
+    }
+
+    getIcon() {
+        return this.icon;
+    }
 }
 
 export class Link {
-    readonly name: string;
-    readonly url: string;
+    private readonly name: string;
+    private readonly url: string;
 
     constructor(data: LinkData) {
         this.name = data.name;
         this.url = data.url;
+    }
+
+    getName() {
+        return this.name;
+    }
+
+    getUrl() {
+        return this.url;
     }
 }

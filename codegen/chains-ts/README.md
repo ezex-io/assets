@@ -34,7 +34,7 @@ Here's a basic example of how to use `chains-ts`:
 ```ts
 import { BinanceBlockchain } from "chains-ts";
 
-console.log(`Blockchain: ${BinanceBlockchain.name}`);
+console.log(`Blockchain: ${BinanceBlockchain.getName()}`);
 ```
 
 ## Building the Project
