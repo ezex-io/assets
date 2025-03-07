@@ -2,6 +2,7 @@
 
 package chains
 
+// Binance Smart Chain Blockchain Implementation
 type BinanceBlockchain struct{}
 
 const rawBinanceBlockchainLogo = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
