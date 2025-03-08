@@ -2,6 +2,7 @@
 
 package chains
 
+// Bitcoin Blockchain Implementation
 type BitcoinBlockchain struct{}
 
 const rawBitcoinBlockchainLogo = `<?xml version=\"1.0\" encoding=\"UTF-8\"?>

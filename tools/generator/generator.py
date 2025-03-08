@@ -101,7 +101,7 @@ import { Blockchain } from "./blockchain";
 """ if types_ts_exists else "") + "\n".join([f'import {{ {chain.capitalize()}Blockchain }} from "./{chain}";' for chain in blockchain_files]) + """
 
 export const Blockchains: Record<string, Blockchain> = {
-""" + "\n".join([f'    "{chain}": new {chain.capitalize()}Blockchain(),' for chain in blockchain_files]) + """
+""" + "\n".join([f'    "{chain}": {chain.capitalize()}Blockchain,' for chain in blockchain_files]) + """
 };
 """
         with open(ts_output_file, "w", encoding="utf-8") as f:

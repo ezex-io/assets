@@ -3,15 +3,22 @@
 import { Blockchain, Asset, Link } from "./blockchain";
 
 /**
- * Binance Smart Chain Blockchain Implementation
+ * Binance Smart Chain Assets Implementation
  */
-export class BinanceBlockchain implements Blockchain {
-    readonly name: string = "Binance Smart Chain";
-    readonly description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
-`;
-    readonly website: string = "https://binance.org/";
-    readonly explorer: string = "https://explorer.binance.org/";
-    readonly logo: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
+export const BinanceBNBAsset = new Asset({
+    id: "binance_bnb",
+    name: "Binance",
+    address: "",
+    symbol: "BNB",
+    type: "NATIVE",
+    assetType: "coin",
+    bip44CoinType: 714,
+    website: "https://binance.org",
+    explorer: "https://explorer.binance.org/",
+    decimals: 18,
+    description: `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
+`,
+    icon: `<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
 	 viewBox=\"0 0 2496 2496\" style=\"enable-background:new 0 0 2496 2496;\" xml:space=\"preserve\">
@@ -31,38 +38,45 @@ export class BinanceBlockchain implements Blockchain {
 		l-281.2-165.8L967.2,753.1L803.9,656.5L803.9,656.5z\"/>
 </g>
 </svg>
-`;
+`
+});
 
-    links: Link[] = [
-        { name: "github", url: "https://github.com/binance-chain/" },
-        { name: "twitter", url: "https://twitter.com/binance_dex" },
-        { name: "reddit", url: "https://reddit.com/r/BinanceExchange" },
-        { name: "whitepaper", url: "https://www.binance.com/resources/ico/Binance_WhitePaper_en.pdf" },
-    ];
-
-    assets: Asset[] = [
-        new BinanceBNBAsset(),
-        new BinanceUSDTAsset(),
-    ];
-}
+export const BinanceUSDTAsset = new Asset({
+    id: "binance_usdt",
+    name: "Tether USD",
+    address: "0x55d398326f99059fF775485246999027B3197955",
+    symbol: "USDT",
+    type: "BEP20",
+    assetType: "token",
+    bip44CoinType: -1,
+    website: "https://tether.to",
+    explorer: "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955",
+    decimals: 18,
+    description: `Tether gives you the joint benefits of open blockchain technology and traditional currency by converting your cash into a stable digital currency equivalent.
+`,
+    icon: `<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 339.43 295.27\"><title>tether-usdt-logo</title><path d=\"M62.15,1.45l-61.89,130a2.52,2.52,0,0,0,.54,2.94L167.95,294.56a2.55,2.55,0,0,0,3.53,0L338.63,134.4a2.52,2.52,0,0,0,.54-2.94l-61.89-130A2.5,2.5,0,0,0,275,0H64.45a2.5,2.5,0,0,0-2.3,1.45h0Z\" style=\"fill:#50af95;fill-rule:evenodd\"/><path d=\"M191.19,144.8v0c-1.2.09-7.4,0.46-21.23,0.46-11,0-18.81-.33-21.55-0.46v0c-42.51-1.87-74.24-9.27-74.24-18.13s31.73-16.25,74.24-18.15v28.91c2.78,0.2,10.74.67,21.74,0.67,13.2,0,19.81-.55,21-0.66v-28.9c42.42,1.89,74.08,9.29,74.08,18.13s-31.65,16.24-74.08,18.12h0Zm0-39.25V79.68h59.2V40.23H89.21V79.68H148.4v25.86c-48.11,2.21-84.29,11.74-84.29,23.16s36.18,20.94,84.29,23.16v82.9h42.78V151.83c48-2.21,84.12-11.73,84.12-23.14s-36.09-20.93-84.12-23.15h0Zm0,0h0Z\" style=\"fill:#fff;fill-rule:evenodd\"/></svg>`
+});
 
 /**
- * Binance Smart Chain Asset Implementation
+ * Binance Smart Chain Blockchain Implementation
  */
-export class BinanceBNBAsset implements Asset {
-    readonly id: string = "binance_bnb";
-    readonly name: string = "Binance";
-    readonly address: string = "";
-    readonly symbol: string = "BNB";
-    readonly type: string = "NATIVE";
-    readonly assetType: string = "coin";
-    readonly bip44CoinType: number = 714;
-    readonly description: string = `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
-`;
-    readonly website: string = "https://binance.org";
-    readonly explorer: string = "https://explorer.binance.org/";
-    readonly decimals: number = 18;
-    readonly icon: string = `<?xml version=\"1.0\" encoding=\"utf-8\"?>
+export const BinanceBlockchain = new Blockchain({
+    name: "Binance Smart Chain",
+    website: "https://binance.org/",
+    explorer: "https://explorer.binance.org/",
+    links: [
+        new Link({ name: "github", url: "https://github.com/binance-chain/" }),
+        new Link({ name: "twitter", url: "https://twitter.com/binance_dex" }),
+        new Link({ name: "reddit", url: "https://reddit.com/r/BinanceExchange" }),
+        new Link({ name: "whitepaper", url: "https://www.binance.com/resources/ico/Binance_WhitePaper_en.pdf" }),
+    ],
+    assets: [
+        BinanceBNBAsset,
+        BinanceUSDTAsset,
+    ],
+    description: `Fast and secure decentralized digital asset exchange. The new crypto currency trading standard is here.
+`,
+    logo: `<?xml version=\"1.0\" encoding=\"utf-8\"?>
 <!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"
 	 viewBox=\"0 0 2496 2496\" style=\"enable-background:new 0 0 2496 2496;\" xml:space=\"preserve\">
@@ -82,20 +96,5 @@ export class BinanceBNBAsset implements Asset {
 		l-281.2-165.8L967.2,753.1L803.9,656.5L803.9,656.5z\"/>
 </g>
 </svg>
-`;
-}
-export class BinanceUSDTAsset implements Asset {
-    readonly id: string = "binance_usdt";
-    readonly name: string = "Tether USD";
-    readonly address: string = "0x55d398326f99059fF775485246999027B3197955";
-    readonly symbol: string = "USDT";
-    readonly type: string = "BEP20";
-    readonly assetType: string = "token";
-    readonly bip44CoinType: number = -1;
-    readonly description: string = `Tether gives you the joint benefits of open blockchain technology and traditional currency by converting your cash into a stable digital currency equivalent.
-`;
-    readonly website: string = "https://tether.to";
-    readonly explorer: string = "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955";
-    readonly decimals: number = 18;
-    readonly icon: string = `<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 339.43 295.27\"><title>tether-usdt-logo</title><path d=\"M62.15,1.45l-61.89,130a2.52,2.52,0,0,0,.54,2.94L167.95,294.56a2.55,2.55,0,0,0,3.53,0L338.63,134.4a2.52,2.52,0,0,0,.54-2.94l-61.89-130A2.5,2.5,0,0,0,275,0H64.45a2.5,2.5,0,0,0-2.3,1.45h0Z\" style=\"fill:#50af95;fill-rule:evenodd\"/><path d=\"M191.19,144.8v0c-1.2.09-7.4,0.46-21.23,0.46-11,0-18.81-.33-21.55-0.46v0c-42.51-1.87-74.24-9.27-74.24-18.13s31.73-16.25,74.24-18.15v28.91c2.78,0.2,10.74.67,21.74,0.67,13.2,0,19.81-.55,21-0.66v-28.9c42.42,1.89,74.08,9.29,74.08,18.13s-31.65,16.24-74.08,18.12h0Zm0-39.25V79.68h59.2V40.23H89.21V79.68H148.4v25.86c-48.11,2.21-84.29,11.74-84.29,23.16s36.18,20.94,84.29,23.16v82.9h42.78V151.83c48-2.21,84.12-11.73,84.12-23.14s-36.09-20.93-84.12-23.15h0Zm0,0h0Z\" style=\"fill:#fff;fill-rule:evenodd\"/></svg>`;
-}
+`,
+})

@@ -6,7 +6,7 @@ import { BitcoinBlockchain } from "./bitcoin";
 import { PactusBlockchain } from "./pactus";
 
 export const Blockchains: Record<string, Blockchain> = {
-    "binance": new BinanceBlockchain(),
-    "bitcoin": new BitcoinBlockchain(),
-    "pactus": new PactusBlockchain(),
+    "binance": BinanceBlockchain,
+    "bitcoin": BitcoinBlockchain,
+    "pactus": PactusBlockchain,
 };
