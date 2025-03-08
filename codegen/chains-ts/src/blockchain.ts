@@ -74,6 +74,10 @@ export class Blockchain {
     getAssets() {
         return this.assets;
     }
+
+    getAssetById(id: string) {
+        return this.assets.find((asset) => asset.getId() === id);
+    }
 }
 
 export class Asset {
