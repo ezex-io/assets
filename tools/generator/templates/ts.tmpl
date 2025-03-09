@@ -1,11 +1,11 @@
+{{ LICENSE }}
+
 // Code generated automatically. DO NOT EDIT.
 
 import { Blockchain, Asset, Link } from "./blockchain";
 
-/**
- * {{ Name }} Assets Implementation
- */
 {% for asset in Assets %}
+// {{ Name }} Assets Implementation
 export const {{ asset.StructName }} = new Asset({
     id: "{{ asset.ID }}",
     name: "{{ asset.Name }}",
@@ -22,9 +22,8 @@ export const {{ asset.StructName }} = new Asset({
 });
 
 {% endfor %}
-/**
- * {{ Name }} Blockchain Implementation
- */
+
+// {{ Name }} Blockchain Implementation
 export const {{ StructName }} = new Blockchain({
     name: "{{ Name }}",
     website: "{{ Website }}",

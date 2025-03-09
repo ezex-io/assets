@@ -13,6 +13,11 @@ GO_TEMPLATE_FILE = "go.tmpl"
 RUST_TEMPLATE_FILE = "rust.tmpl"
 TS_TEMPLATE_FILE = "ts.tmpl"
 
+with open("LICENSE", "r", encoding="utf-8") as f:
+    LICENSE = f.read().strip()
+
+LICENSE = f"/*\n{LICENSE}\n*/"
+
 # Supported languages
 LANGUAGES = ["go", "rust", "ts"]
 
@@ -43,7 +48,9 @@ def update_lib_rs():
     lib_rs_path = rust_src_dir / "lib.rs"
     blockchain_files = [f.stem for f in rust_src_dir.glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset"]]
 
-    content = """// Code generated automatically. DO NOT EDIT.
+    content = LICENSE +"""
+    
+// Code generated automatically. DO NOT EDIT.
 
 pub mod types;
 pub mod blockchain;
@@ -64,7 +71,9 @@ def update_meta_files(language):
 
     if language == "go":
         blockchain_files = [f.stem.replace(".gen", "") for f in Path(GEN_GOLANG_DIR).glob("*.gen.go")]
-        content = """// Code generated automatically. DO NOT EDIT.
+        content = LICENSE +"""
+        
+// Code generated automatically. DO NOT EDIT.
 
 package chains
 
@@ -74,7 +83,9 @@ var Blockchains = map[string]Blockchain{
 
     elif language == "rust":
         blockchain_files = [f.stem for f in Path(GEN_RUST_DIR).glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset", "meta"]]
-        content = """// Code generated automatically. DO NOT EDIT.
+        content = LICENSE +"""     
+        
+// Code generated automatically. DO NOT EDIT.
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -94,7 +105,9 @@ pub fn get_blockchains() -> HashMap<String, Arc<dyn Blockchain>> {
         types_ts_exists = (Path(GEN_TYPESCRIPT_DIR) / "types.ts").exists()
 
         # meta.ts
-        meta_content = """// Code generated automatically. DO NOT EDIT.
+        meta_content = LICENSE +"""
+        
+// Code generated automatically. DO NOT EDIT.
 
 import { Blockchain } from "./blockchain";
 """ + ("""import { TypesBlockchain } from "./types";
@@ -109,7 +122,9 @@ export const Blockchains: Record<string, Blockchain> = {
         print(f"✅ Updated {ts_output_file}")
 
         # index.ts
-        index_content = """// Code generated automatically. DO NOT EDIT.
+        index_content = LICENSE +"""
+        
+// Code generated automatically. DO NOT EDIT.
 
 import { Blockchain } from "./blockchain";
 import { Blockchains } from "./meta";
@@ -200,7 +215,8 @@ def process_chain(chain_path, language):
             Explorer=chain_info.get("explorer", ""),
             Links=chain_info.get("links", []),
             Assets=assets,
-            Logo=chain_logo
+            Logo=chain_logo,
+            LICENSE=LICENSE
         )
     except Exception as e:
         print(f"❌ Jinja2 Rendering Error: {e}")
