@@ -12,6 +12,30 @@ TEMPLATE_DIR = "tools/generator/templates"
 GO_TEMPLATE_FILE = "go.tmpl"
 RUST_TEMPLATE_FILE = "rust.tmpl"
 TS_TEMPLATE_FILE = "ts.tmpl"
+LICENSE = """/*
+MIT License
+
+Copyright (c) 2025 ezeX
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+"""
 
 # Supported languages
 LANGUAGES = ["go", "rust", "ts"]
@@ -43,7 +67,8 @@ def update_lib_rs():
     lib_rs_path = rust_src_dir / "lib.rs"
     blockchain_files = [f.stem for f in rust_src_dir.glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset"]]
 
-    content = """// Code generated automatically. DO NOT EDIT.
+    content = LICENSE +"""
+// Code generated automatically. DO NOT EDIT.
 
 pub mod types;
 pub mod blockchain;
@@ -64,7 +89,8 @@ def update_meta_files(language):
 
     if language == "go":
         blockchain_files = [f.stem.replace(".gen", "") for f in Path(GEN_GOLANG_DIR).glob("*.gen.go")]
-        content = """// Code generated automatically. DO NOT EDIT.
+        content = LICENSE +"""
+// Code generated automatically. DO NOT EDIT.
 
 package chains
 
@@ -74,7 +100,8 @@ var Blockchains = map[string]Blockchain{
 
     elif language == "rust":
         blockchain_files = [f.stem for f in Path(GEN_RUST_DIR).glob("*.rs") if f.stem not in ["lib", "types", "blockchain", "asset", "meta"]]
-        content = """// Code generated automatically. DO NOT EDIT.
+        content = LICENSE +"""     
+// Code generated automatically. DO NOT EDIT.
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -94,7 +121,8 @@ pub fn get_blockchains() -> HashMap<String, Arc<dyn Blockchain>> {
         types_ts_exists = (Path(GEN_TYPESCRIPT_DIR) / "types.ts").exists()
 
         # meta.ts
-        meta_content = """// Code generated automatically. DO NOT EDIT.
+        meta_content = LICENSE +"""
+// Code generated automatically. DO NOT EDIT.
 
 import { Blockchain } from "./blockchain";
 """ + ("""import { TypesBlockchain } from "./types";
@@ -109,7 +137,8 @@ export const Blockchains: Record<string, Blockchain> = {
         print(f"✅ Updated {ts_output_file}")
 
         # index.ts
-        index_content = """// Code generated automatically. DO NOT EDIT.
+        index_content = LICENSE +"""
+// Code generated automatically. DO NOT EDIT.
 
 import { Blockchain } from "./blockchain";
 import { Blockchains } from "./meta";
